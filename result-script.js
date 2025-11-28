@@ -66,6 +66,10 @@ class ResultManager {
             ? program
             : (program.title || program.name || '');
 
+        const image = (typeof program === 'object' && program.image)
+            ? program.image
+            : null; // image가 없으면 프리뷰 안 만들기
+
         const li = document.createElement('li');
         li.classList.add('program-item');
 
@@ -73,6 +77,20 @@ class ResultManager {
         textSpan.className = 'program-text';
         textSpan.textContent = text;
         li.appendChild(textSpan);
+
+        // 이미지 프리뷰 박스 추가 (있을 때만)
+        if (image) {
+            const preview = document.createElement('div');
+            preview.className = 'program-preview';
+
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = text;
+
+            preview.appendChild(img);
+            li.appendChild(preview);
+        }
+
 
         // 화살표 버튼 (항상 생성)
         const button = document.createElement('button');
@@ -216,6 +234,7 @@ class ResultManager {
         }
     }
 }
+
 
 document.addEventListener('DOMContentLoaded', () => {
     new ResultManager();

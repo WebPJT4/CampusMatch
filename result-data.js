@@ -8,18 +8,27 @@ const personalityTypes = {
         strengths: ['목표 지향적 사고', '뛰어난 리더십', '협업 실행력', '추진력'],
         weaknesses: ['단기 성과에 매몰될 수 있음', '경쟁적 환경에서 스트레스', '과정보다 결과 중시'],
        basePrograms: [
-    { title: "전공·학과 캡스톤디자인 경진대회", link: "https://onstar.jj.ac.kr/program/capstone" },
-    { title: "취업을 위한 AI·데이터 실전 프로젝트", link: "https://onstar.jj.ac.kr/program/9587" },
-    { title: "창의설계 경진대회(전공 프로젝트)", link: "https://onstar.jj.ac.kr/program/9324" },
-    { title: "튜터링 프로그램 – 전공 튜터 역할", link: "https://onstar.jj.ac.kr/program/9092" },
-    { title: "전공 맞춤 취업 로드맵 특강", link: "https://onstar.jj.ac.kr/program/9711" }
-]
+        { title: "2025년 캡스톤디자인 온라인 경진대회", 
+          link: "https://onstar.jj.ac.kr/program/capstone" ,
+          image: "images/programs/ods_bp1.webp" },
+        { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
+          link: "https://onstar.jj.ac.kr/program/9587" ,
+          image: "images/programs/ods_bp2.webp" },
+        { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
+          link: "https://onstar.jj.ac.kr/program/9324" ,
+          image: "images/programs/ods_bp3.webp" },
+        { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
+          link: "https://onstar.jj.ac.kr/program/9092" ,
+          image: "images/programs/ods_bp4.webp"},
+        { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
+          link: "https://onstar.jj.ac.kr/program/9711" ,
+          image: "images/programs/ods_bp5.webp"}
+        ]
 ,
         alternativePrograms: [
-            '졸업필수 프로젝트 리더 역할',
-            '안정적인 팀 프로젝트',
-            '캡스톤 준비 모임 참여',
-            '경험 많은 선배와 팀 구성'
+            '2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고',
+            '[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)'
+            
         ]
     },
     'ODI': {
