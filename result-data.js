@@ -9,19 +9,19 @@ const personalityTypes = {
         weaknesses: ['단기 성과에 매몰될 수 있음', '경쟁적 환경에서 스트레스', '과정보다 결과 중시'],
        basePrograms: [
         { title: "2025년 캡스톤디자인 온라인 경진대회", 
-          link: "https://onstar.jj.ac.kr/program/capstone" ,
+          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488684&article.offset=0&articleLimit=20" ,
           image: "images/programs/ods_bp1.webp" },
         { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
-          link: "https://onstar.jj.ac.kr/program/9587" ,
+          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=478205&article.offset=0&articleLimit=20&srSearchVal=멘토링" ,
           image: "images/programs/ods_bp2.webp" },
         { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
-          link: "https://onstar.jj.ac.kr/program/9324" ,
+          link: "https://sanhak.jj.ac.kr/sanhak/community/business.jsp?mode=view&article_no=452010&board_wrapper=%2Fsanhak%2Fcommunity%2Fbusiness.jsp&pager.offset=0&board_no=3850" ,
           image: "images/programs/ods_bp3.webp" },
         { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
-          link: "https://onstar.jj.ac.kr/program/9092" ,
+          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
           image: "images/programs/ods_bp4.webp"},
         { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
-          link: "https://onstar.jj.ac.kr/program/9711" ,
+          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485810&article.offset=60&articleLimit=20" ,
           image: "images/programs/ods_bp5.webp"}
         ]
 ,
@@ -39,18 +39,26 @@ const personalityTypes = {
         strengths: ['깊은 전문성', '뛰어난 몰입력', '자기주도 문제해결', '독립적 실행력'],
         weaknesses: ['커뮤니케이션 능력 부족', '네트워킹에 소극적', '정보 교류 어려움'],
         basePrograms: [
-    { title: "학부생 연구 프로그램(URP)", link: "https://onstar.jj.ac.kr/program/9263" },
-    { title: "연구실 인턴십(랩 실습)", link: "https://onstar.jj.ac.kr/program/9154" },
-    { title: "데이터분석·코딩 집중반(자율학습)", link: "https://onstar.jj.ac.kr/program/9493" },
-    { title: "전공 자격증 집중 과정", link: "https://onstar.jj.ac.kr/program/9621" },
-    { title: "학술논문 작성 역량 강화 워크숍", link: "https://onstar.jj.ac.kr/program/9101" }
+    { title: "2026년도 과학기술정보통신부 기초연구사업 1차 신규과제 공모 (리더연구)", 
+      link: "https://www.nrf.re.kr/biz/info/notice/view?menu_no=378&nts_no=254610&biz_no=142&biz_not_gubn=guide" ,
+    image: "images/programs/odi_bp1.webp"},
+    { title: "[대외협력홍보실] 홍보 콘텐츠 제작 애자일 직무 인턴 모집 안내", 
+      link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485519&article.offset=60&articleLimit=20" ,
+      image: "images/programs/odi_bp2.webp"},
+    { title: "[교수학습개발센터] 2025-2학기 JJ 코넬노트 경진대회 안내", 
+      link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=490182&article.offset=0&articleLimit=20&srSearchVal=경진" ,
+      image: "images/programs/odi_bp3.webp"},
+    { title: "[진로개발센터] 2025학년도 나만의 커리어패스 경진대회 안내", 
+      link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485817&article.offset=0&articleLimit=20&srSearchVal=경진" ,
+      image: "images/programs/odi_bp4.webp"},
+    { title: "2025-2학기 디지털역량강화교육 컴퓨터활용능력 1급필기", 
+      link: "https://onstar.jj.ac.kr" ,
+      image: "images/programs/odi_bp5.webp"}
 ]
 ,
         alternativePrograms: [
-            '자격증 문제풀이 특강(기초반)',
-            '교수님 직접지도 논문 프로그램',
-            '성적 인증 Lab 인턴십',
-            '수상 실적 프로그램 재도전'
+            '「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내',
+            
         ]
     },
     'OWS': {
