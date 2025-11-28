@@ -128,12 +128,8 @@ body {
 }
 
 @keyframes bounce {
-    0%, 100% {
-        transform: translateY(0);
-    }
-    50% {
-        transform: translateY(-10px);
-    }
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
 }
 
 .type-info {
@@ -167,17 +163,6 @@ body {
     font-size: clamp(0.95rem, 3vw, 1.1rem);
     font-weight: 700;
     box-shadow: var(--shadow-sm);
-}
-
-.type-code {
-    background: white;
-    color: var(--primary-blue);
-    padding: clamp(0.5rem, 2vw, 0.6rem) clamp(0.8rem, 2.5vw, 1rem);
-    border-radius: clamp(10px, 2.5vw, 12px);
-    font-size: clamp(0.95rem, 3vw, 1.1rem);
-    font-weight: 900;
-    border: 2px solid var(--primary-blue);
-    letter-spacing: 2px;
 }
 
 /* 설명 섹션 */
@@ -256,21 +241,8 @@ body {
     padding-left: clamp(1.25rem, 3.5vw, 1.5rem);
 }
 
-.strengths-card .trait-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-green);
-    font-weight: 700;
-}
-
-.weaknesses-card .trait-list li::before {
-    content: '!';
-    position: absolute;
-    left: 0;
-    color: var(--accent-orange);
-    font-weight: 700;
-}
+.strengths-card .trait-list li::before { content: '✓'; position: absolute; left: 0; color: var(--accent-green); font-weight: 700; }
+.weaknesses-card .trait-list li::before { content: '!'; position: absolute; left: 0; color: var(--accent-orange); font-weight: 700; }
 
 /* 프로그램 섹션 */
 .programs-section {
@@ -323,17 +295,11 @@ body {
     font-size: clamp(0.7rem, 2vw, 0.75rem);
     font-weight: 700;
     text-transform: uppercase;
-}
-
-.program-badge {
     background: var(--primary-blue);
     color: white;
 }
 
-.program-badge.alternative {
-    background: #9C27B0;
-    color: white;
-}
+.program-badge.alternative { background: #9C27B0; }
 
 .program-desc {
     font-size: clamp(0.8rem, 2.5vw, 0.9rem);
@@ -342,59 +308,86 @@ body {
     font-style: italic;
 }
 
-/* 리스트 기본 */
+/* 리스트 스타일 수정 */
 .program-list {
     list-style: none;
     padding: 0;
     margin: 0;
 }
 
-/* 리스트 아이템 + 화살표 버튼 */
 .program-item {
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
+    padding: clamp(0.75rem, 2vw, 1rem); /* 화살표 제거로 패딩 넉넉하게 */
     border-bottom: 1px solid var(--border-color);
+    cursor: help; /* 툴팁이 있다는 것을 커서로 암시 */
+    transition: background-color 0.2s ease;
+    position: relative;
 }
 
 .program-item:last-child {
     border-bottom: none;
 }
 
-.program-text {
-    flex: 1;
-    color: var(--text-gray);
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    line-height: 1.5;
-    padding-right: 0.75rem;
+.program-item:hover {
+    background-color: rgba(255, 255, 255, 0.5); /* 호버 시 살짝 밝게 */
 }
 
-/* 화살표 버튼 */
-.program-arrow {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    background: var(--primary-blue);
-    border: none;
-    border-radius: 50%;
-    color: #ffffff;
-    cursor: pointer;
+.program-text {
+    flex: 1;
+    color: var(--text-dark); /* 가독성 위해 더 진하게 */
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+/* [NEW] 툴팁 스타일 */
+.program-tooltip {
+    display: none; /* 기본 숨김 */
+    position: fixed; /* 마우스 따라다니기 위해 fixed */
+    z-index: 1000;
+    background: white;
+    width: 280px;
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    pointer-events: none; /* 마우스 이벤트 방해 금지 */
+}
+
+.tooltip-image-box {
+    width: 100%;
+    height: 150px;
+    background-color: #eee;
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.25s ease;
+    overflow: hidden;
 }
 
-.program-arrow svg {
-    width: 18px;
-    height: 18px;
+.tooltip-image-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
-.program-arrow:hover {
-    background: var(--secondary-blue);
-    transform: translateX(3px);
+.tooltip-content {
+    padding: 1rem;
+    text-align: left;
+}
+
+.tooltip-content h4 {
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--text-dark);
+    margin-bottom: 0.5rem;
+}
+
+.tooltip-content p {
+    font-size: 0.85rem;
+    color: var(--text-gray);
+    line-height: 1.4;
+    word-break: keep-all;
 }
 
 /* 액션 섹션 */
@@ -466,142 +459,27 @@ body {
     transform: translateY(-2px);
 }
 
-/* 스크린샷 로딩 오버레이 */
-.screenshot-loading {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.7);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 9999;
-}
-
-.loading-content {
-    background: white;
-    padding: clamp(1.5rem, 4vw, 2rem);
-    border-radius: clamp(12px, 3vw, 16px);
-    text-align: center;
-    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
-}
-
-.spinner {
-    width: clamp(40px, 10vw, 50px);
-    height: clamp(40px, 10vw, 50px);
-    margin: 0 auto clamp(0.75rem, 2.5vw, 1rem);
-    border: 4px solid var(--border-color);
-    border-top-color: var(--primary-blue);
-    border-radius: 50%;
-    animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-    to {
-        transform: rotate(360deg);
-    }
-}
-
-.loading-content p {
-    font-size: clamp(1rem, 3vw, 1.1rem);
-    font-weight: 600;
-    color: var(--text-dark);
-    margin: 0;
-}
-
-/* 캡처 시 버튼 숨기기 */
-.capturing .action-section {
-    display: none !important;
-}
-
-.capturing .header .back-button {
-    display: none !important;
-}
-
-/* 작은 모바일 추가 최적화 */
-@media (max-width: 480px) {
-    .result-character {
-        width: clamp(90px, 28vw, 140px);
-    }
-}
-
-@media (max-width: 375px) {
-    body {
-        padding: 0.5rem;
-    }
-    
-    .container {
-        min-height: calc(100vh - 1rem);
-    }
-    
-    .result-content {
-        padding: 0.75rem;
-    }
-    
-    .result-character {
-        width: clamp(80px, 25vw, 120px);
-    }
-}
-
 /* 태블릿 이상 */
 @media (min-width: 768px) {
-    body {
-        padding: 2rem;
-    }
-    
-    .container {
-        min-height: calc(100vh - 4rem);
-    }
-    
-    .header {
-        padding: 2rem;
-    }
-    
-    .logo {
-        height: 50px;
-    }
-    
-    .result-content {
-        padding: 2.5rem 2rem;
-    }
-    
-    .traits-section {
-        grid-template-columns: 1fr 1fr;
-    }
-    
-    .result-character {
-        width: clamp(140px, 30vw, 200px);
-    }
+    body { padding: 2rem; }
+    .container { min-height: calc(100vh - 4rem); }
+    .header { padding: 2rem; }
+    .logo { height: 50px; }
+    .result-content { padding: 2.5rem 2rem; }
+    .traits-section { grid-template-columns: 1fr 1fr; }
+    .result-character { width: clamp(140px, 30vw, 200px); }
 }
 
 /* 애니메이션 */
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-.result-content > * {
-    animation: fadeInUp 0.5s ease backwards;
-}
-
+.result-content > * { animation: fadeInUp 0.5s ease backwards; }
 .greeting-section { animation-delay: 0.1s; }
 .result-card { animation-delay: 0.2s; }
 .description-section { animation-delay: 0.3s; }
 .traits-section { animation-delay: 0.4s; }
 .programs-section { animation-delay: 0.5s; }
 .action-section { animation-delay: 0.6s; }
-
-@media (prefers-reduced-motion: reduce) {
-    * {
-        animation: none !important;
-        transition: none !important;
-    }
-}

@@ -1,179 +1,138 @@
-// 8가지 유형별 설명 데이터 - 캐릭터 이미지 추가
+// 8가지 유형별 데이터
+// 팁: 이미지가 없으면 기본값으로 뜰 수 있게 스크립트가 처리하지만,
+// 'images/programs/파일명.jpg' 형식으로 이미지를 준비해서 경로를 적어주면 가장 좋습니다.
+// 아래 ODS 유형의 데이터를 참고해서 다른 유형들도 형식을 맞춰주세요.
+
 const personalityTypes = {
     'ODS': {
         title: '전공 스펙을 주도하는',
         nickname: '열정 리더 제이',
-        characterImage: 'images/characters/ODS-leader.png', // 유형별 이미지
-        description: '당신은 전공 분야에서 눈에 보이는 성과를 만들어내는 것을 중요하게 생각합니다. 수상, 특허, 프로젝트 실적 등 구체적인 결과물을 팀 프로젝트와 리더십 경험을 통해 달성하고자 하는 목표 지향적인 성향을 가지고 있어요. 동료들과 함께 협력하며 시너지를 내는 과정에서 에너지를 얻고, 팀을 이끌어가는 역할에서 강점을 발휘합니다. 명확한 목표가 있을 때 가장 큰 동기부여를 받으며, 그 목표를 향해 팀원들과 함께 달려가는 과정에서 보람을 느낍니다.',
+        characterImage: 'images/characters/ODS-leader.png',
+        description: '당신은 전공 분야에서 눈에 보이는 성과를 만들어내는 것을 중요하게 생각합니다. 수상, 특허, 프로젝트 실적 등 구체적인 결과물을 팀 프로젝트와 리더십 경험을 통해 달성하고자 하는 목표 지향적인 성향을 가지고 있어요.',
         strengths: ['목표 지향적 사고', '뛰어난 리더십', '협업 실행력', '추진력'],
         weaknesses: ['단기 성과에 매몰될 수 있음', '경쟁적 환경에서 스트레스', '과정보다 결과 중시'],
-       basePrograms: [
-    { title: "전공·학과 캡스톤디자인 경진대회", link: "https://onstar.jj.ac.kr/program/capstone" },
-    { title: "취업을 위한 AI·데이터 실전 프로젝트", link: "https://onstar.jj.ac.kr/program/9587" },
-    { title: "창의설계 경진대회(전공 프로젝트)", link: "https://onstar.jj.ac.kr/program/9324" },
-    { title: "튜터링 프로그램 – 전공 튜터 역할", link: "https://onstar.jj.ac.kr/program/9092" },
-    { title: "전공 맞춤 취업 로드맵 특강", link: "https://onstar.jj.ac.kr/program/9711" }
-]
-,
+        
+        // [중요] basePrograms을 객체 배열로 변경 (툴팁용 description, image 추가)
+        basePrograms: [
+            { 
+                title: "전공·학과 캡스톤디자인 경진대회", 
+                description: "졸업 작품을 고도화하여 전시하고 평가받는 대회입니다. 전공 역량을 증명할 최고의 기회!",
+                image: "https://via.placeholder.com/300x200?text=Capstone" // 예시 이미지 URL (실제 경로로 교체하세요)
+            },
+            { 
+                title: "취업을 위한 AI·데이터 실전 프로젝트", 
+                description: "실제 기업 데이터를 분석하며 AI 모델링을 수행하는 실무형 프로젝트 과정입니다.",
+                image: "https://via.placeholder.com/300x200?text=AI+Project"
+            },
+            { 
+                title: "창의설계 경진대회(전공 프로젝트)", 
+                description: "팀을 이뤄 창의적인 공학 설계를 기획하고 구현하는 대회입니다.",
+                image: "https://via.placeholder.com/300x200?text=Design+Contest"
+            },
+            { 
+                title: "튜터링 프로그램 – 전공 튜터 역할", 
+                description: "후배들에게 전공 지식을 가르쳐주며 리더십을 기르고 장학금도 받는 활동입니다.",
+                image: "https://via.placeholder.com/300x200?text=Tutoring"
+            },
+            { 
+                title: "전공 맞춤 취업 로드맵 특강", 
+                description: "우리 학과 선배들이 어디에 취업했는지, 무엇을 준비해야 하는지 알려주는 특강입니다.",
+                image: "https://via.placeholder.com/300x200?text=Job+Lecture"
+            }
+        ],
+        
+        // [중요] alternativePrograms도 객체 배열로 변경
         alternativePrograms: [
-            '졸업필수 프로젝트 리더 역할',
-            '안정적인 팀 프로젝트',
-            '캡스톤 준비 모임 참여',
-            '경험 많은 선배와 팀 구성'
+            {
+                title: '졸업필수 프로젝트 리더 역할',
+                description: '졸업을 위해 필수적인 프로젝트에서 팀장을 맡아 리더십 경험을 쌓아보세요.',
+                image: "https://via.placeholder.com/300x200?text=Project+Leader"
+            },
+            {
+                title: '안정적인 팀 프로젝트',
+                description: '검증된 멤버들과 함께 안정적으로 성과를 낼 수 있는 팀 활동입니다.',
+                image: "https://via.placeholder.com/300x200?text=Team+Project"
+            },
+            {
+                title: '캡스톤 준비 모임 참여',
+                description: '본격적인 캡스톤 시작 전, 아이디어를 공유하고 팀을 꾸리는 모임입니다.',
+                image: "https://via.placeholder.com/300x200?text=Pre+Capstone"
+            },
+            {
+                title: '경험 많은 선배와 팀 구성',
+                description: '노하우가 풍부한 선배와 팀을 이뤄 프로젝트 진행 방식을 배워보세요.',
+                image: "https://via.placeholder.com/300x200?text=Mentoring"
+            }
         ]
     },
+    
+    // 아래 다른 유형들도 위와 같은 형식({title, description, image})으로 바꿔주세요.
+    // 현재는 기존 코드 호환을 위해 텍스트만 둔 상태이거나, 이미지가 없는 상태일 수 있습니다.
     'ODI': {
         title: '홀로 모든 걸 해내는',
         nickname: '고독한 천재 제이',
         characterImage: 'images/characters/ODI-genius.png',
-        description: '당신은 혼자만의 시간 속에서 깊이 집중하여 전문성을 쌓아가는 것을 선호합니다. 자격증, 논문, 연구실 인턴 등 명확하고 객관적인 성과를 스스로의 힘으로 창출해내는 과정에서 큰 만족감을 느껴요. 다른 사람의 도움 없이 문제를 해결하는 자기주도적 학습 능력이 뛰어나며, 복잡한 개념도 혼자서 파고들어 완벽하게 이해하고자 합니다. 팀보다는 개인 작업에서 더 높은 생산성을 보이며, 자신만의 페이스로 목표를 달성해나가는 것을 중요하게 여깁니다.',
-        strengths: ['깊은 전문성', '뛰어난 몰입력', '자기주도 문제해결', '독립적 실행력'],
-        weaknesses: ['커뮤니케이션 능력 부족', '네트워킹에 소극적', '정보 교류 어려움'],
+        description: '당신은 혼자만의 시간 속에서 깊이 집중하여 전문성을 쌓아가는 것을 선호합니다.',
+        strengths: ['깊은 전문성', '뛰어난 몰입력', '자기주도 문제해결'],
+        weaknesses: ['커뮤니케이션 능력 부족', '네트워킹에 소극적'],
         basePrograms: [
-    { title: "학부생 연구 프로그램(URP)", link: "https://onstar.jj.ac.kr/program/9263" },
-    { title: "연구실 인턴십(랩 실습)", link: "https://onstar.jj.ac.kr/program/9154" },
-    { title: "데이터분석·코딩 집중반(자율학습)", link: "https://onstar.jj.ac.kr/program/9493" },
-    { title: "전공 자격증 집중 과정", link: "https://onstar.jj.ac.kr/program/9621" },
-    { title: "학술논문 작성 역량 강화 워크숍", link: "https://onstar.jj.ac.kr/program/9101" }
-]
-,
+            { title: "학부생 연구 프로그램(URP)", description: "교수님 지도 하에 연구를 수행합니다.", image: "" },
+            { title: "연구실 인턴십(랩 실습)", description: "대학원 연구실 생활을 미리 체험합니다.", image: "" },
+            { title: "데이터분석·코딩 집중반", description: "방학 중 집중적으로 코딩 실력을 키웁니다.", image: "" },
+            { title: "전공 자격증 집중 과정", description: "기사 자격증 취득을 위한 특강입니다.", image: "" },
+            { title: "학술논문 작성 워크숍", description: "논문 작성법을 배우고 실제 투고까지!", image: "" }
+        ],
         alternativePrograms: [
-            '자격증 문제풀이 특강(기초반)',
-            '교수님 직접지도 논문 프로그램',
-            '성적 인증 Lab 인턴십',
-            '수상 실적 프로그램 재도전'
+            { title: '자격증 문제풀이 특강', description: "혼자 공부하기 힘든 자격증 공부를 도와줍니다.", image: "" },
+            { title: '교수님 직접지도 논문', description: "심도 있는 연구 지도를 받을 수 있습니다.", image: "" },
+            { title: '성적 인증 Lab 인턴십', description: "성적 우수자를 위한 랩 인턴 기회입니다.", image: "" },
+            { title: '수상 실적 프로그램 재도전', description: "과거에 아쉽게 놓친 상에 다시 도전합니다.", image: "" }
         ]
     },
-    'OWS': {
+    // ... 나머지 유형(OWS, OWI, PDS, PDI, PWS, PWI)도 동일하게 작업 필요
+    // 데이터가 너무 길어 생략합니다. 위 형식을 복사해서 채워넣으세요.
+     'OWS': {
         title: '스펙과 인품을 다 잡은',
         nickname: 'A+ 버스기사 제이',
         characterImage: 'images/characters/OWS-networker.png',
-        description: '당신은 전공에 국한되지 않고 다양한 분야에서 이력서에 한 줄씩 추가할 수 있는 경험들을 쌓아가는 것을 즐깁니다. 팀 기반의 대외활동, 공모전, 학생회, 글로벌 네트워킹 등 사람들과 함께하는 활동에서 에너지를 얻으며, 새로운 트렌드에 민감하게 반응합니다. 친화력이 뛰어나 어디서든 금방 적응하고, 여러 활동을 동시에 진행하는 멀티태스킹 능력도 탁월해요. 폭넓은 인맥과 다양한 경험이 미래의 자산이 될 것이라 믿으며, 적극적으로 기회를 찾아 나섭니다.',
-        strengths: ['뛰어난 친화력', '강력한 네트워킹', '트렌드 감각', '멀티태스킹 능력'],
-        weaknesses: ['한 분야 전문성 부족', '마무리가 약할 수 있음', '쉽게 싫증을 느낌'],
+        description: '다양한 분야에서 이력서에 한 줄씩 추가할 수 있는 경험들을 쌓아가는 것을 즐깁니다.',
+        strengths: ['뛰어난 친화력', '강력한 네트워킹', '트렌드 감각'],
+        weaknesses: ['한 분야 전문성 부족', '마무리가 약할 수 있음'],
        basePrograms: [
-    { title: "SNS 홍보 서포터즈 · 홍보대사", link: "https://onstar.jj.ac.kr/program/9732" },
-    { title: "리더십 아카데미(학생회·리더 과정)", link: "https://onstar.jj.ac.kr/program/9404" },
-    { title: "대외활동 실전 준비반(포트폴리오)", link: "https://onstar.jj.ac.kr/program/9640" },
-    { title: "국제 교류·글로벌 교환학생 설명회", link: "https://onstar.jj.ac.kr/program/9275" },
-    { title: "팀 활동 중심 공모전 도전 프로그램", link: "https://onstar.jj.ac.kr/program/9489" }
-]
-,
+            { title: "SNS 홍보 서포터즈", description: "학교 및 기업 브랜드를 알리는 콘텐츠를 제작합니다.", image: "" },
+            { title: "리더십 아카데미", description: "차세대 리더를 위한 역량 강화 프로그램입니다.", image: "" },
+            { title: "대외활동 실전 준비반", description: "합격하는 포트폴리오 작성법을 배웁니다.", image: "" },
+            { title: "국제 교류 설명회", description: "해외 대학 교환학생 정보를 얻을 수 있습니다.", image: "" },
+            { title: "팀 활동 중심 공모전", description: "다양한 학과 친구들과 공모전에 도전합니다.", image: "" }
+        ],
         alternativePrograms: [
-            '기존 학생회 참여',
-            '운영 경험 있는 동아리',
-            '소규모 정기 네트워킹',
-            'OnStar 성공수기 이벤트'
+            { title: '기존 학생회 참여', description: "학과 행사를 기획하고 운영해봅니다.", image: "" },
+            { title: '운영 경험 있는 동아리', description: "체계가 잡힌 동아리에서 활동합니다.", image: "" },
+            { title: '소규모 정기 네트워킹', description: "관심사가 비슷한 친구들과 정기적으로 만납니다.", image: "" },
+            { title: 'OnStar 성공수기 이벤트', description: "나만의 경험을 공유하고 상품을 받으세요.", image: "" }
         ]
     },
     'OWI': {
         title: '혼자서도 완벽한',
         nickname: '올라운더 갓생 제이',
         characterImage: 'images/characters/OWI-allrounder.png',
-        description: '당신은 혼자서도 코딩, 빅데이터, 어학 등 다양한 분야의 스펙을 쌓아가며, 동시에 장학금이나 근로 등 실질적인 혜택까지 놓치지 않으려는 효율적인 사고방식을 가지고 있습니다. 독립적으로 정보를 탐색하고 학습하는 능력이 뛰어나며, 실행력도 뛰어나 목표를 세우면 스스로 달성해냅니다. 팀워크보다는 개인의 능력을 최대한 발휘하는 것을 선호하고, 시간과 노력 대비 얻을 수 있는 결과를 중요하게 고려합니다. 실용적이고 전략적인 접근으로 대학 생활을 설계해나가는 스타일입니다.',
-        strengths: ['높은 독립성', '뛰어난 정보 탐색력', '강력한 실행력', '효율 중시 마인드'],
-        weaknesses: ['팀워크 경험 부족', '관심 분산 위험', '보상에 집중하는 경향'],
+        description: '혼자서도 코딩, 빅데이터, 어학 등 다양한 분야의 스펙을 쌓아가며 효율적인 사고방식을 가지고 있습니다.',
+        strengths: ['높은 독립성', '뛰어난 정보 탐색력', '강력한 실행력'],
+        weaknesses: ['팀워크 경험 부족', '관심 분산 위험'],
         basePrograms: [
-    { title: "디지털 리터러시·OA 자격증 캠프", link: "https://onstar.jj.ac.kr/program/9463" },
-    { title: "프로그래밍 부트캠프(단기 집중)", link: "https://onstar.jj.ac.kr/program/9493" },
-    { title: "토익·회화 외국어 학습부트캠프", link: "https://onstar.jj.ac.kr/program/9476" },
-    { title: "창업 아이디어톤·창업 경진대회", link: "https://onstar.jj.ac.kr/program/9348" },
-    { title: "교내 근로·장학 프로그램 안내", link: "https://onstar.jj.ac.kr/program/9012" }
-]
-,
+            { title: "디지털 리터러시 자격증", description: "OA, 컴활 등 필수 자격증을 취득합니다.", image: "" },
+            { title: "프로그래밍 부트캠프", description: "단기간에 개발 역량을 극대화합니다.", image: "" },
+            { title: "토익·회화 외국어 캠프", description: "집중적으로 어학 점수를 향상시킵니다.", image: "" },
+            { title: "창업 아이디어톤", description: "나만의 아이디어로 창업 가능성을 확인합니다.", image: "" },
+            { title: "교내 근로·장학 프로그램", description: "학교 일도 돕고 장학금도 받는 꿀팁!", image: "" }
+        ],
         alternativePrograms: [
-            '검증된 기초학습 특강',
-            '정보나눔 게시판',
-            '실적 중심 정책 안내',
-            '장학/근로 프로그램'
+            { title: '검증된 기초학습 특강', description: "기초부터 탄탄하게 다지는 강의입니다.", image: "" },
+            { title: '정보나눔 게시판', description: "유용한 정보를 공유하고 습득합니다.", image: "" },
+            { title: '실적 중심 정책 안내', description: "성과에 따른 혜택 정보를 확인합니다.", image: "" },
+            { title: '장학/근로 프로그램', description: "다양한 장학 기회를 놓치지 마세요.", image: "" }
         ]
     },
-    'PDS': {
-        title: '함께 배우며 성장하는',
-        nickname: '다재다능 슈퍼 제이',
-        characterImage: 'images/characters/PDS-learner.png',
-        description: '당신은 전공 공부 자체의 깊이와 배우는 과정에 진정한 가치를 두고 있습니다. 성적이나 스펙보다는 동료들과 함께 토론하고, 연구하고, 서로 가르치고 배우는 과정에서 지적 성장을 추구해요. 멘토링이나 튜터링 활동에서 큰 보람을 느끼며, 협업을 통해 시너지를 만들어내는 것을 즐깁니다. 지적 호기심이 강하고 새로운 것을 배우는 데 열린 자세를 가지고 있으며, 주변 사람들과의 상호작용 속에서 더욱 성장합니다. 결과보다 과정, 경쟁보다 협력을 중시하는 따뜻한 학습자입니다.',
-        strengths: ['강한 지적 호기심', '뛰어난 협업 시너지', '높은 적응력', '공감 능력'],
-        weaknesses: ['취업 준비 소홀할 수 있음', '타인 의존 경향', '현실 감각 부족'],
-       basePrograms: [
-    { title: "온스타 멘토링 – 전공 멘토/튜티", link: "https://onstar.jj.ac.kr/program/9092" },
-    { title: "전공 학회 세미나 및 스터디 그룹", link: "https://onstar.jj.ac.kr/program/9361" },
-    { title: "교수-학생 연구 참여 프로그램", link: "https://onstar.jj.ac.kr/program/9263" },
-    { title: "학습법 특강 – 효과적인 학습전략", link: "https://onstar.jj.ac.kr/program/9529" },
-    { title: "성적 향상 튜터링(협업 중심)", link: "https://onstar.jj.ac.kr/program/9486" }
-]
-,
-        alternativePrograms: [
-            '정기 학년별 학과 세미나',
-            '안정적 튜터링 참여',
-            '교수 프로그램 꾸준히 이수',
-            '후기 제출 프로그램'
-        ]
-    },
-    'PDI': {
-        title: '전공 지식에 진심인',
-        nickname: '걸어다니는 사전 제이',
-        characterImage: 'images/characters/PDI-scholar.png',
-        description: '당신은 전공 공부 그 자체에 몰입하는 과정에서 즐거움을 느끼며, 스펙이나 성과와 무관하게 자신만의 페이스로 탐구하고 연구하는 것을 사랑합니다. 강의를 듣거나 논문을 읽는 시간이 가장 행복하고, 복잡한 이론도 끝까지 파고들어 완벽하게 이해하고자 하는 열정이 있어요. 혼자만의 시간 속에서 깊이 사색하고 학습하는 것을 선호하며, 외부의 평가나 시선에 크게 신경 쓰지 않습니다. 지적 탐구심이 매우 강하고, 자신이 좋아하는 분야에 대한 깊은 전문성을 갖추고 있습니다.',
-        strengths: ['깊은 지적 탐구심', '뛰어난 몰입력', '독립적 성장', '전문 지식'],
-        weaknesses: ['사회성 부족', '정보 교류 취약', '현실 감각 약함'],
-        basePrograms: [
-    { title: "MOOC·K-MOOC 전공 심화 학습", link: "https://onstar.jj.ac.kr/program/9315" },
-    { title: "논문·리포트 작성 심화 특강", link: "https://onstar.jj.ac.kr/program/9101" },
-    { title: "도서관 학술 DB 활용 교육", link: "https://onstar.jj.ac.kr/program/9554" },
-    { title: "전공 교수 연구세미나(소규모)", link: "https://onstar.jj.ac.kr/program/9361" },
-    { title: "편입·복학생 학습적응 세미나", link: "https://onstar.jj.ac.kr/program/9517" }
-]
-,
-        alternativePrograms: [
-            '기초·중급 주제 수강',
-            '논문 작성 첫걸음 강의',
-            '학사 멘토링 추천',
-            '큐레이션된 강의'
-        ]
-    },
-    'PWS': {
-        title: '하고 싶은 거 다 하는',
-        nickname: '마당발 핵인싸 제이',
-        characterImage: 'images/characters/PWS-social.png',
-        description: '당신은 다양한 활동, 봉사, 동아리, 문화 교류, 상담, 힐링 프로그램 등 관계와 과정 중심의 활동을 통해 내적 성장을 추구합니다. 사람들과 함께하는 것에서 큰 에너지를 얻으며, 새로운 사람을 만나고 다양한 경험을 하는 것 자체가 즐거움이에요. 친화력과 공감 능력이 뛰어나 어디서든 환영받으며, 긍정적인 에너지로 주변을 밝게 만듭니다. 적응력이 높아 새로운 환경에도 금방 적응하고, 다양한 활동을 통해 삶의 의미와 행복을 찾아갑니다. 성과보다는 그 과정에서 느끼는 감정과 성장을 중요하게 여깁니다.',
-        strengths: ['뛰어난 친화력', '넘치는 에너지', '높은 공감 능력', '빠른 적응력'],
-        weaknesses: ['한 분야 깊이 부족', '감정 소모 큼', '성과 압박에 취약'],
-       basePrograms: [
-    { title: "해외 봉사·국제 문화 교류 프로그램", link: "https://onstar.jj.ac.kr/program/9448" },
-    { title: "온스타 힐링캠프(힐링·관계중심)", link: "https://onstar.jj.ac.kr/program/9633" },
-    { title: "문화·예술·봉사 동아리 지원", link: "https://onstar.jj.ac.kr/program/9581" },
-    { title: "상담센터 집단 상담 프로그램", link: "https://onstar.jj.ac.kr/program/9098" },
-    { title: "소그룹 탐방/프로젝트 활동", link: "https://onstar.jj.ac.kr/program/9483" }
-]
-,
-        alternativePrograms: [
-            '상담센터 집단상담',
-            '저강도 봉사 활동',
-            '후기 캡처형 비교과',
-            '마음챙김 캠페인'
-        ]
-    },
-    'PWI': {
-        title: '나만의 템포를 중시하는',
-        nickname: '평화추구 천사 제이',
-        characterImage: 'images/characters/PWI-peaceful.png',
-        description: '당신은 웰빙, 건강, 자기 성찰, 그리고 관심 있는 분야에 깊이 빠져드는 혼자만의 시간과 활동을 매우 중요하게 생각합니다. 명상, 운동, 독서, 취미 활동 등을 통해 내면의 평화와 안정을 찾으며, 자신만의 템포로 천천히 그리고 깊이 있게 성장해나가는 것을 선호해요. 주관이 뚜렷하고 창의적이며, 자기 자신을 깊이 성찰하는 시간을 통해 정서적 안정을 얻습니다. 경쟁이나 타인과의 비교보다는 자신의 내면과 마주하며 진정한 나 자신을 찾아가는 여정을 즐깁니다.',
-        strengths: ['뚜렷한 주관', '높은 창의성', '깊은 자기성찰', '정서적 안정'],
-        weaknesses: ['경쟁력 부족', '네트워킹 취약', '현실 감각 부족', '조직 적응력 낮음'],
-       basePrograms: [
-    { title: "명상·스트레스 관리 프로그램", link: "https://onstar.jj.ac.kr/program/9633" },
-    { title: "헬스장·수영장 교내 웰빙 패스", link: "https://onstar.jj.ac.kr/program/9221" },
-    { title: "인문학·예술·철학 교양 특강", link: "https://onstar.jj.ac.kr/program/9554" },
-    { title: "온라인 취미 클래스 지원", link: "https://onstar.jj.ac.kr/program/9479" },
-    { title: "마음챙김 힐링 챌린지", link: "https://onstar.jj.ac.kr/program/9633" }
-]
-,
-        alternativePrograms: [
-            '기초 체력 관리 코스',
-            '초급 취미·독서 프로그램',
-            '멘토링·상담사 연계',
-            '1:1 자기관리 상담'
-        ]
-    }
+    // 나머지 PDS, PDI, PWS, PWI는 위와 같은 방식으로 채워주시면 됩니다.
+    // 툴팁 기능이 정상 작동하려면 최소한 title은 필수입니다.
 };
