@@ -8,26 +8,27 @@ const personalityTypes = {
         strengths: ['목표 지향적 사고', '뛰어난 리더십', '협업 실행력', '추진력'],
         weaknesses: ['단기 성과에 매몰될 수 있음', '경쟁적 환경에서 스트레스', '과정보다 결과 중시'],
        basePrograms: [
-        { title: "2025년 캡스톤디자인 온라인 경진대회", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488684&article.offset=0&articleLimit=20" ,
-          image: "images/programs/ods_bp1.webp" },
-        { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=478205&article.offset=0&articleLimit=20&srSearchVal=멘토링" ,
-          image: "images/programs/ods_bp2.webp" },
-        { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
-          link: "https://sanhak.jj.ac.kr/sanhak/community/business.jsp?mode=view&article_no=452010&board_wrapper=%2Fsanhak%2Fcommunity%2Fbusiness.jsp&pager.offset=0&board_no=3850" ,
-          image: "images/programs/ods_bp3.webp" },
-        { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
-          image: "images/programs/ods_bp4.webp"},
-        { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485810&article.offset=60&articleLimit=20" ,
-          image: "images/programs/ods_bp5.webp"}
+            { title: "2025년 캡스톤디자인 온라인 경진대회", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488684&article.offset=0&articleLimit=20" ,
+              image: "images/programs/ods_bp1.webp" },
+            { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=478205&article.offset=0&articleLimit=20&srSearchVal=멘토링" ,
+              image: "images/programs/ods_bp2.webp" },
+            { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
+              link: "https://sanhak.jj.ac.kr/sanhak/community/business.jsp?mode=view&article_no=452010&board_wrapper=%2Fsanhak%2Fcommunity%2Fbusiness.jsp&pager.offset=0&board_no=3850" ,
+              image: "images/programs/ods_bp3.webp" },
+            { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
+              image: "images/programs/ods_bp4.webp"},
+            { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485810&article.offset=60&articleLimit=20" ,
+              image: "images/programs/ods_bp5.webp"}
         ]
-    ,
+        ,
         alternativePrograms: [
             '2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고',
-            '[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)'
+            '[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)',
+            '[교수학습개발센터] Boost Up 기초 수학 교실 멘티 모집 안내'
             
         ]
     },
@@ -39,25 +40,26 @@ const personalityTypes = {
         strengths: ['깊은 전문성', '뛰어난 몰입력', '자기주도 문제해결', '독립적 실행력'],
         weaknesses: ['커뮤니케이션 능력 부족', '네트워킹에 소극적', '정보 교류 어려움'],
         basePrograms: [
-        { title: "2026년도 과학기술정보통신부 기초연구사업 1차 신규과제 공모 (리더연구)", 
-          link: "https://www.nrf.re.kr/biz/info/notice/view?menu_no=378&nts_no=254610&biz_no=142&biz_not_gubn=guide" ,
-          image: "images/programs/odi_bp1.webp"},
-        { title: "[대외협력홍보실] 홍보 콘텐츠 제작 애자일 직무 인턴 모집", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485519&article.offset=60&articleLimit=20" ,
-          image: "images/programs/odi_bp2.webp"},
-        { title: "[교수학습개발센터] 2025-2학기 JJ 코넬노트 경진대회", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=490182&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-          image: "images/programs/odi_bp3.webp"},
-        { title: "[진로개발센터] 2025학년도 나만의 커리어패스 경진대회", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485817&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-          image: "images/programs/odi_bp4.webp"},
-        { title: "2025-2학기 디지털역량강화교육 컴퓨터활용능력 1급필기", 
-          link: "https://onstar.jj.ac.kr" ,
-          image: "images/programs/odi_bp5.webp"}
-    ]
-    ,
+            { title: "2026년도 과학기술정보통신부 기초연구사업 1차 신규과제 공모 (리더연구)", 
+              link: "https://www.nrf.re.kr/biz/info/notice/view?menu_no=378&nts_no=254610&biz_no=142&biz_not_gubn=guide" ,
+              image: "images/programs/odi_bp1.webp"},
+            { title: "[대외협력홍보실] 홍보 콘텐츠 제작 애자일 직무 인턴 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485519&article.offset=60&articleLimit=20" ,
+              image: "images/programs/odi_bp2.webp"},
+            { title: "[교수학습개발센터] 2025-2학기 JJ 코넬노트 경진대회", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=490182&article.offset=0&articleLimit=20&srSearchVal=경진" ,
+              image: "images/programs/odi_bp3.webp"},
+            { title: "[진로개발센터] 2025학년도 나만의 커리어패스 경진대회", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485817&article.offset=0&articleLimit=20&srSearchVal=경진" ,
+              image: "images/programs/odi_bp4.webp"},
+            { title: "2025-2학기 디지털역량강화교육 컴퓨터자격증반 운영 안내 (ACP 프로그램 / 컴퓨터활용능력 1급 및 2급)", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484599&article.offset=100&articleLimit=20" ,
+              image: "images/programs/odi_bp5.webp"}
+        ]
+        ,
         alternativePrograms: [
             '「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내',
+            'RISE사업단, 오픈형 클라우드 및 AI 실습 교육'
             
         ]
     },
@@ -68,24 +70,24 @@ const personalityTypes = {
         description: '당신은 전공에 국한되지 않고 다양한 분야에서 이력서에 한 줄씩 추가할 수 있는 경험들을 쌓아가는 것을 즐깁니다. 팀 기반의 대외활동, 공모전, 학생회, 글로벌 네트워킹 등 사람들과 함께하는 활동에서 에너지를 얻으며, 새로운 트렌드에 민감하게 반응합니다. 친화력이 뛰어나 어디서든 금방 적응하고, 여러 활동을 동시에 진행하는 멀티태스킹 능력도 탁월해요. 폭넓은 인맥과 다양한 경험이 미래의 자산이 될 것이라 믿으며, 적극적으로 기회를 찾아 나섭니다.',
         strengths: ['뛰어난 친화력', '강력한 네트워킹', '트렌드 감각', '멀티태스킹 능력'],
         weaknesses: ['한 분야 전문성 부족', '마무리가 약할 수 있음', '쉽게 싫증을 느낌'],
-       basePrograms: [
-        { title: "[원격교육지원센터] 2025 K-MOOC 서포터즈 모집 안내", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486606&article.offset=20&articleLimit=20" ,
-          image: "images/programs/ows_bp1.webp"},
-        { title: "「2025 전주시 국제기구 청년인턴 프로그램」 참가자 모집", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487876&article.offset=20&articleLimit=20" ,
-          image: "images/programs/ows_bp2.webp"},
-        { title: "[창업지원단] (창업캠프)'로컬 인사이트 트립 in공주' 참여자 모집", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=489779&article.offset=0&articleLimit=20" ,
-          image: "images/programs/ows_bp3.webp"},
-        { title: "[창업창직센터] 제1회 전북 RISE IR 캠프 참여자 모집", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=495641&article.offset=0&articleLimit=20&srSearchVal=팀" ,
-          image: "images/programs/ows_bp4.webp"},
-        { title: "[인문사회융합인재양성사업단] 2025 L-HUSS in the World 해외 탐방(싱가포르) 학생 선발", 
-          link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488552&article.offset=0&articleLimit=20" ,
-          image: "images/programs/ows_bp5.webp"}
+        basePrograms: [
+            { title: "[원격교육지원센터] 2025 K-MOOC 서포터즈 모집 안내", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486606&article.offset=20&articleLimit=20" ,
+              image: "images/programs/ows_bp1.webp"},
+            { title: "「2025 전주시 국제기구 청년인턴 프로그램」 참가자 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487876&article.offset=20&articleLimit=20" ,
+              image: "images/programs/ows_bp2.webp"},
+            { title: "[창업지원단] (창업캠프)'로컬 인사이트 트립 in공주' 참여자 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=489779&article.offset=0&articleLimit=20" ,
+              image: "images/programs/ows_bp3.webp"},
+            { title: "[창업창직센터] 제1회 전북 RISE IR 캠프 참여자 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=495641&article.offset=0&articleLimit=20&srSearchVal=팀" ,
+              image: "images/programs/ows_bp4.webp"},
+            { title: "[인문사회융합인재양성사업단] 2025 L-HUSS in the World 해외 탐방(싱가포르) 학생 선발", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488552&article.offset=0&articleLimit=20" ,
+              image: "images/programs/ows_bp5.webp"}
         ]
-    ,
+        ,
         alternativePrograms: [
             '2026학년도 중화권 파견 교환학생 선발 안내',
             '[사회봉사센터] 2025 국립국제교육원 단기해외교육봉사 모집'
@@ -99,18 +101,28 @@ const personalityTypes = {
         strengths: ['높은 독립성', '뛰어난 정보 탐색력', '강력한 실행력', '효율 중시 마인드'],
         weaknesses: ['팀워크 경험 부족', '관심 분산 위험', '보상에 집중하는 경향'],
         basePrograms: [
-    { title: "디지털 리터러시·OA 자격증 캠프", link: "https://onstar.jj.ac.kr/program/9463" },
-    { title: "프로그래밍 부트캠프(단기 집중)", link: "https://onstar.jj.ac.kr/program/9493" },
-    { title: "토익·회화 외국어 학습부트캠프", link: "https://onstar.jj.ac.kr/program/9476" },
-    { title: "창업 아이디어톤·창업 경진대회", link: "https://onstar.jj.ac.kr/program/9348" },
-    { title: "교내 근로·장학 프로그램 안내", link: "https://onstar.jj.ac.kr/program/9012" }
-]
-,
+            { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
+              image: "images/programs/ods_bp4.webp"},
+            { title: "2025학년도 2학기 JJ필독서 경진대회", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485663&article.offset=60&articleLimit=20" ,
+              image: "images/programs/owi_bp2.webp"},
+            { title: "「JST 토익스피킹 톡!톡! 클래스 프로그램」 2차 추가모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485901&article.offset=40&articleLimit=20" ,
+              image: "images/programs/owi_bp3.webp"},
+            { title: "[전주시/창업지원단] 2025년 전주기업반 취업지원사업 참여자 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486216&article.offset=40&articleLimit=20" ,
+              image: "images/programs/owi_bp4.webp"},
+            { title: "[창업지원단] 전주대×홍익대×목원대 '로컬크리에이터 양성을 위한 포럼' 참여 학생 모집", 
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487126&article.offset=20&articleLimit=20" ,
+              image: "images/programs/owi_bp5.webp"}
+        ]
+        ,
         alternativePrograms: [
-            '검증된 기초학습 특강',
-            '정보나눔 게시판',
-            '실적 중심 정책 안내',
-            '장학/근로 프로그램'
+            '[교수학습개발센터] 2025-2학기 AI 활용 맞춤형 A+글쓰기 교실',
+            '[교수학습개발센터] 2025-2학기 Boost Up 기초영어교실 모집 안내',
+            '[교수학습개발센터] 학습전략워크숍(JJ 코넬노트, JJ 학습플래너) 운영 안내',
+            '2025학년도 창업장학금 안내(창업마일리지 적립 및 배점표)'
         ]
     },
     'PDS': {
