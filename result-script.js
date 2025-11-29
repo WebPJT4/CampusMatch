@@ -107,6 +107,13 @@ class ResultManager {
             </svg>
         `;
 
+        // 링크가 있으면 버튼 누르면 새 탭으로 이동
+        if (typeof program === 'object' && program.link) {
+            button.addEventListener('click', () => {
+            window.open(program.link, '_blank');  // 새 탭으로 열기
+        });
+        }
+
         li.appendChild(button);
         return li;
     }
@@ -182,39 +189,7 @@ class ResultManager {
             window.location.href = 'index.html';
         });
 
-        // 화살표 버튼 클릭 시: 제목 복사 + 온스타 메인 열기
-        document.addEventListener('click', async (e) => {
-            const arrow = e.target.closest('.program-arrow');
-            if (!arrow) return;
-
-            // 1) 프로그램 제목 가져오기
-            let title = arrow.dataset.programTitle;
-            if (!title) {
-                const item = arrow.closest('.program-item');
-                const textEl = item?.querySelector('.program-text');
-                title = textEl?.textContent?.trim() || '';
-            }
-
-            // 2) 클립보드 복사 (가능하면)
-            if (title) {
-                const textToCopy = `${title} (전주대 비교과 프로그램 검색용)`;
-                try {
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        await navigator.clipboard.writeText(textToCopy);
-                        alert('프로그램 이름이 복사되었습니다!\n온스타에서 붙여넣기(Ctrl+V) 후 검색하세요.');
-                    } else {
-                        // 구형 브라우저 대응
-                        prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                    }
-                } catch (err) {
-                    console.error('클립보드 복사 실패:', err);
-                    prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                }
-            }
-
-            // 3) 온스타 메인 열기
-            window.open('https://onstar.jj.ac.kr/', '_blank');
-        });
+        
     }
     
     shareResult() {

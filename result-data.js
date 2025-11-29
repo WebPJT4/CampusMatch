@@ -26,10 +26,15 @@ const personalityTypes = {
         ]
         ,
         alternativePrograms: [
-            '2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고',
-            '[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)',
-            '[교수학습개발센터] Boost Up 기초 수학 교실 멘티 모집 안내'
-            
+            { title: "2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486031&article.offset=0&articleLimit=20&srSearchVal=팀",
+              image:"images/programs/ods_ap1.webp"},
+            { title: "[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488244&article.offset=0&articleLimit=20",
+              image:"images/programs/ods_ap2.webp"},
+            { title: "[교수학습개발센터] Boost Up 기초 수학 교실 멘티 모집 안내",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484821&article.offset=80&articleLimit=20",
+              image:"images/programs/ods_ap3.webp"}
         ]
     },
     'ODI': {
@@ -58,9 +63,12 @@ const personalityTypes = {
         ]
         ,
         alternativePrograms: [
-            '「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내',
-            'RISE사업단, 오픈형 클라우드 및 AI 실습 교육'
-            
+            { title: "「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485613&article.offset=60&articleLimit=20",
+              image:"images/programs/odi_ap1.webp"},
+            { title: "RISE사업단, 오픈형 클라우드 및 AI 실습 교육",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486507&article.offset=40&articleLimit=20",
+              image:"images/programs/odi_ap2.webp"}
         ]
     },
     'OWS': {
@@ -89,8 +97,12 @@ const personalityTypes = {
         ]
         ,
         alternativePrograms: [
-            '2026학년도 중화권 파견 교환학생 선발 안내',
-            '[사회봉사센터] 2025 국립국제교육원 단기해외교육봉사 모집'
+            { title: "2026학년도 중화권 파견 교환학생 선발 안내",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487862&article.offset=20&articleLimit=20",
+              image:"images/programs/ows_ap1.webp"},
+            { title: "[사회봉사센터] 2025 국립국제교육원 단기해외교육봉사 모집",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485890&article.offset=40&articleLimit=20",
+              image:"images/programs/ows_ap2.webp"}
         ]
     },
     'OWI': {
@@ -119,10 +131,18 @@ const personalityTypes = {
         ]
         ,
         alternativePrograms: [
-            '[교수학습개발센터] 2025-2학기 AI 활용 맞춤형 A+글쓰기 교실',
-            '[교수학습개발센터] 2025-2학기 Boost Up 기초영어교실 모집 안내',
-            '[교수학습개발센터] 학습전략워크숍(JJ 코넬노트, JJ 학습플래너) 운영 안내',
-            '2025학년도 창업장학금 안내(창업마일리지 적립 및 배점표)'
+            { title: "[교수학습개발센터] 2025-2학기 AI 활용 맞춤형 A+글쓰기 교실",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484845&article.offset=80&articleLimit=20",
+              image:"images/programs/owi_ap1.webp"},
+            { title: "[교수학습개발센터] 2025-2학기 Boost Up 기초영어교실 모집 안내",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484841&article.offset=80&articleLimit=20",
+              image:"images/programs/owi_ap2.webp"},
+            { title: "[교수학습개발센터] 학습전략워크숍(JJ 코넬노트, JJ 학습플래너) 운영 안내",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486045&article.offset=40&articleLimit=20",
+              image:"images/programs/owi_ap3.webp"},
+            { title: "2025학년도 창업장학금 안내(창업마일리지 적립 및 배점표)",
+              link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485186&article.offset=80&articleLimit=20",
+              image:"images/programs/owi_ap4.webp"}
         ]
     },
     'PDS': {
