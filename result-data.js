@@ -12,30 +12,30 @@ const personalityTypes = {
        basePrograms: [
             { title: "2025년 캡스톤디자인 온라인 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488684&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ods_bp1.webp", deadline: "2026-01-30" },
+              image: "images/programs/ods_bp1.webp", deadline: "2025-11-14" },
             { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=478205&article.offset=0&articleLimit=20&srSearchVal=멘토링" ,
               image: "images/programs/ods_bp2.webp", deadline: "2026-01-30" },
             { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
               link: "https://sanhak.jj.ac.kr/sanhak/community/business.jsp?mode=view&article_no=452010&board_wrapper=%2Fsanhak%2Fcommunity%2Fbusiness.jsp&pager.offset=0&board_no=3850" ,
-              image: "images/programs/ods_bp3.webp", deadline: "2026-01-30" },
+              image: "images/programs/ods_bp3.webp", deadline: "2025-11-21" },
             { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ods_bp4.webp", deadline: "2025-11-30"},
+              image: "images/programs/ods_bp4.webp", deadline: "2025-11-09"},
             { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485810&article.offset=60&articleLimit=20" ,
-              image: "images/programs/ods_bp5.webp", deadline: "2026-01-30"}
+              image: "images/programs/ods_bp5.webp", deadline: "2025-09-21"}
         ],
         alternativePrograms: [
             { title: "2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486031&article.offset=0&articleLimit=20&srSearchVal=팀",
-              image:"images/programs/ods_ap1.webp", deadline: "2026-01-30"},
+              image:"images/programs/ods_ap1.webp", deadline: "2025-10-19"},
             { title: "[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488244&article.offset=0&articleLimit=20",
-              image:"images/programs/ods_ap2.webp", deadline: "2026-01-30"},
+              image:"images/programs/ods_ap2.webp", deadline: "2025-11-19"},
             { title: "[교수학습개발센터] Boost Up 기초 수학 교실 멘티 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484821&article.offset=80&articleLimit=20",
-              image:"images/programs/ods_ap3.webp", deadline: "2026-01-30"}
+              image:"images/programs/ods_ap3.webp", deadline: "2025-09-12"}
         ]
     },
     'ODI': {
@@ -48,28 +48,28 @@ const personalityTypes = {
         basePrograms: [
             { title: "2026년도 과학기술정보통신부 기초연구사업 1차 신규과제 공모 (리더연구)", 
               link: "https://www.nrf.re.kr/biz/info/notice/view?menu_no=378&nts_no=254610&biz_no=142&biz_not_gubn=guide" ,
-              image: "images/programs/odi_bp1.webp", deadline: "2026-01-30"},
+              image: "images/programs/odi_bp1.webp", deadline: "2025-12-16"},
             { title: "[대외협력홍보실] 홍보 콘텐츠 제작 애자일 직무 인턴 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485519&article.offset=60&articleLimit=20" ,
-              image: "images/programs/odi_bp2.webp", deadline: "2026-01-30"},
+              image: "images/programs/odi_bp2.webp", deadline: "2025-09-17"},
             { title: "[교수학습개발센터] 2025-2학기 JJ 코넬노트 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=490182&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-              image: "images/programs/odi_bp3.webp", deadline: "2026-01-30"},
+              image: "images/programs/odi_bp3.webp", deadline: "2025-12-19"},
             { title: "[진로개발센터] 2025학년도 나만의 커리어패스 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485817&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-              image: "images/programs/odi_bp4.webp", deadline: "2026-01-30"},
+              image: "images/programs/odi_bp4.webp", deadline: "2025-09-25"},
             { title: "2025-2학기 디지털역량강화교육 컴퓨터자격증반 운영 안내 (ACP 프로그램 / 컴퓨터활용능력 1급 및 2급)", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484599&article.offset=100&articleLimit=20" ,
-              image: "images/programs/odi_bp5.webp", deadline: "2026-01-30"}
+              image: "images/programs/odi_bp5.webp", deadline: "2026-01-16"}
         ]
         ,
         alternativePrograms: [
             { title: "「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485613&article.offset=60&articleLimit=20",
-              image:"images/programs/odi_ap1.webp", deadline: "2026-01-30"},
+              image:"images/programs/odi_ap1.webp", deadline: "2025-09-11"},
             { title: "RISE사업단, 오픈형 클라우드 및 AI 실습 교육",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486507&article.offset=40&articleLimit=20",
-              image:"images/programs/odi_ap2.webp", deadline: "2026-01-30"}
+              image:"images/programs/odi_ap2.webp", deadline: "2026-01-03"}
         ]
     },
     'OWS': {
@@ -82,28 +82,28 @@ const personalityTypes = {
         basePrograms: [
             { title: "[원격교육지원센터] 2025 K-MOOC 서포터즈 모집 안내", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486606&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ows_bp1.webp", deadline: "2026-01-30"},
+              image: "images/programs/ows_bp1.webp", deadline: "2025-10-17"},
             { title: "「2025 전주시 국제기구 청년인턴 프로그램」 참가자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487876&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ows_bp2.webp", deadline: "2026-01-30"},
+              image: "images/programs/ows_bp2.webp", deadline: "2025-10-17"},
             { title: "[창업지원단] (창업캠프)'로컬 인사이트 트립 in공주' 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=489779&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ows_bp3.webp", deadline: "2026-01-30"},
+              image: "images/programs/ows_bp3.webp", deadline: "2025-10-17"},
             { title: "[창업창직센터] 제1회 전북 RISE IR 캠프 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=495641&article.offset=0&articleLimit=20&srSearchVal=팀" ,
-              image: "images/programs/ows_bp4.webp", deadline: "2026-01-30"},
+              image: "images/programs/ows_bp4.webp", deadline: "2025-12-03"},
             { title: "[인문사회융합인재양성사업단] 2025 L-HUSS in the World 해외 탐방(싱가포르) 학생 선발", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488552&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ows_bp5.webp", deadline: "2026-01-30"}
+              image: "images/programs/ows_bp5.webp", deadline: "2025-11-10"}
         ]
         ,
         alternativePrograms: [
             { title: "2026학년도 중화권 파견 교환학생 선발 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487862&article.offset=20&articleLimit=20",
-              image:"images/programs/ows_ap1.webp", deadline: "2026-01-30"},
+              image:"images/programs/ows_ap1.webp", deadline: "2025-11-07"},
             { title: "[사회봉사센터] 2025 국립국제교육원 단기해외교육봉사 모집",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485890&article.offset=40&articleLimit=20",
-              image:"images/programs/ows_ap2.webp", deadline: "2026-01-30"}
+              image:"images/programs/ows_ap2.webp", deadline: "2025-09-21"}
         ]
     },
     'OWI': {
@@ -116,34 +116,34 @@ const personalityTypes = {
         basePrograms: [
             { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ods_bp4.webp", deadline: "2026-01-30"},
+              image: "images/programs/ods_bp4.webp", deadline: "2025-11-17"},
             { title: "2025학년도 2학기 JJ필독서 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485663&article.offset=60&articleLimit=20" ,
-              image: "images/programs/owi_bp2.webp", deadline: "2026-01-30"},
+              image: "images/programs/owi_bp2.webp", deadline: "2025-10-17"},
             { title: "「JST 토익스피킹 톡!톡! 클래스 프로그램」 2차 추가모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485901&article.offset=40&articleLimit=20" ,
-              image: "images/programs/owi_bp3.webp", deadline: "2026-01-30"},
+              image: "images/programs/owi_bp3.webp", deadline: "2025-09-26"},
             { title: "[전주시/창업지원단] 2025년 전주기업반 취업지원사업 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486216&article.offset=40&articleLimit=20" ,
-              image: "images/programs/owi_bp4.webp", deadline: "2026-01-30"},
+              image: "images/programs/owi_bp4.webp", deadline: "2025-11-29"},
             { title: "[창업지원단] 전주대×홍익대×목원대 '로컬크리에이터 양성을 위한 포럼' 참여 학생 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487126&article.offset=20&articleLimit=20" ,
-              image: "images/programs/owi_bp5.webp", deadline: "2026-01-30"}
+              image: "images/programs/owi_bp5.webp", deadline: "2025-10-22"}
         ]
         ,
         alternativePrograms: [
             { title: "[교수학습개발센터] 2025-2학기 AI 활용 맞춤형 A+글쓰기 교실",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484845&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap1.webp", deadline: "2026-01-30"},
+              image:"images/programs/owi_ap1.webp", deadline: "2025-10-22"},
             { title: "[교수학습개발센터] 2025-2학기 Boost Up 기초영어교실 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484841&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap2.webp", deadline: "2026-01-30"},
+              image:"images/programs/owi_ap2.webp", deadline: "2025-10-22"},
             { title: "[교수학습개발센터] 학습전략워크숍(JJ 코넬노트, JJ 학습플래너) 운영 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486045&article.offset=40&articleLimit=20",
-              image:"images/programs/owi_ap3.webp", deadline: "2026-01-30"},
+              image:"images/programs/owi_ap3.webp", deadline: "2025-10-22"},
             { title: "2025학년도 창업장학금 안내(창업마일리지 적립 및 배점표)",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485186&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap4.webp", deadline: "2026-01-30"}
+              image:"images/programs/owi_ap4.webp", deadline: "2025-12-19"}
         ]
     },
     'PDS': {

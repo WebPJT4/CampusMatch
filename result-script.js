@@ -52,19 +52,42 @@ class ResultManager {
     checkIsClosed(deadlineStr) {
         if (!deadlineStr) return false;
         const today = new Date();
-        today.setHours(0, 0, 0, 0);
+        today.setHours(0, 0, 0, 0); // 시간 무시하고 날짜만 비교
         const deadline = new Date(deadlineStr);
         if (isNaN(deadline.getTime())) return false;
         return today > deadline;
     }
 
-    // [수정됨] 화살표 버튼 제거 및 리스트 클릭 이벤트 추가
+    // [추가] D-Day 계산 함수
+    calculateDDay(deadlineStr) {
+        if (!deadlineStr) return null;
+        
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const deadline = new Date(deadlineStr);
+        deadline.setHours(0, 0, 0, 0);
+
+        if (isNaN(deadline.getTime())) return null;
+
+        // 시간 차이를 일(Day) 단위로 변환
+        const diffTime = deadline - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays < 0) return null; // 이미 지남
+        if (diffDays === 0) return 'D-Day';
+        return `D-${diffDays}`;
+    }
+
     createProgramItem(program) {
         const programObj = typeof program === 'string' ? { title: program, link: '', image: null, deadline: null } : program;
         const text = programObj.title || programObj.name || '';
         const image = programObj.image || null;
         const deadline = programObj.deadline || null;
+        
         const isClosed = this.checkIsClosed(deadline);
+        // [추가] D-Day 텍스트 계산
+        const dDayText = !isClosed ? this.calculateDDay(deadline) : null;
 
         const li = document.createElement('li');
         li.classList.add('program-item');
@@ -75,14 +98,22 @@ class ResultManager {
             li.dataset.status = 'active';
         }
 
-        // 상태 배지 (디자인 수정됨 in CSS)
         const badgeSpan = document.createElement('span');
         badgeSpan.className = `status-badge ${isClosed ? 'closed' : 'active'}`;
         badgeSpan.textContent = isClosed ? '마감' : '모집중';
         
+        // 텍스트 컨테이너
         const textSpan = document.createElement('span');
         textSpan.className = 'program-text';
         textSpan.textContent = text;
+
+        // [추가] D-Day 태그 생성 및 부착 (모집 중이고 날짜가 있을 때만)
+        if (dDayText) {
+            const dDaySpan = document.createElement('span');
+            dDaySpan.className = 'd-day-tag'; // CSS 클래스 추가
+            dDaySpan.textContent = dDayText;
+            textSpan.appendChild(dDaySpan); // 제목 옆에 붙임
+        }
         
         const contentWrapper = document.createElement('div');
         contentWrapper.style.display = 'flex';
@@ -93,7 +124,6 @@ class ResultManager {
         contentWrapper.appendChild(textSpan);
         li.appendChild(contentWrapper);
 
-        // 이미지 프리뷰
         if (image) {
             const preview = document.createElement('div');
             preview.className = 'program-preview';
@@ -104,13 +134,8 @@ class ResultManager {
             li.appendChild(preview);
         }
 
-        // [요청 2] 화살표 버튼 삭제됨 (기존 코드 제거)
-
-        // [요청 2] 리스트 전체 클릭 시 링크 이동
-        if (programObj.link && !isClosed) {
+        if (programObj.link) {
             li.addEventListener('click', () => window.open(programObj.link, '_blank'));
-        } else if (isClosed) {
-            // 마감된 경우 클릭 불가 스타일은 CSS로 처리
         }
         
         return li;
@@ -174,7 +199,6 @@ class ResultManager {
     }
     
     setupEventListeners() {
-        // [요청 4] 온스타 바로가기 링크 수정
         document.getElementById('viewPrograms').addEventListener('click', () => {
             window.open('https://onstar.jj.ac.kr/', '_blank');
         });
@@ -195,7 +219,7 @@ class ResultManager {
         }
     }
     
-    // [최종 완성] "유령 복제(Ghost Clone)" 기법
+    // [유령 복제 기법 유지]
     async saveAsImage() {
         if (window.location.protocol === 'file:') {
             alert('🚨 중요: "file://" 경로로 실행 중입니다. 이미지 누락 가능성이 있습니다.\nVS Code의 [Live Server]를 이용해주세요.');
