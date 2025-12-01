@@ -5,6 +5,9 @@
     --accent-orange: #FF9500;
     --accent-green: #34C759;
     --accent-purple: #AF52DE;
+    --accent-teal: #009688; /* [추가] 대안 프로그램용 틸 색상 */
+    --gray-bg: #E0E0E0; 
+    --gray-text: #999999; 
     --bg-white: #FFFFFF;
     --bg-light: #F8F9FA;
     --bg-cream: #FFF9E6;
@@ -192,6 +195,89 @@ body {
     margin-bottom: clamp(0.75rem, 2.5vw, 1rem);
 }
 
+/* 토글 스위치 배치를 위한 flex */
+.program-header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+/* 토글 스위치 스타일 */
+.toggle-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: white;
+    padding: 6px 12px;
+    border-radius: 20px;
+    box-shadow: var(--shadow-sm);
+    border: 1px solid var(--border-color);
+}
+
+.toggle-label {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--text-dark);
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 36px;
+    height: 20px;
+}
+
+.switch input { 
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 16px;
+    width: 16px;
+    left: 2px;
+    bottom: 2px;
+    background-color: white;
+    transition: .4s;
+}
+
+input:checked + .slider {
+    background-color: var(--primary-blue);
+}
+
+input:focus + .slider {
+    box-shadow: 0 0 1px var(--primary-blue);
+}
+
+input:checked + .slider:before {
+    transform: translateX(16px);
+}
+
+.slider.round {
+    border-radius: 34px;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+}
+
+
 .section-header h2 {
     font-size: clamp(1.1rem, 3.5vw, 1.3rem);
     font-weight: 700;
@@ -211,35 +297,47 @@ body {
     color: var(--text-gray);
 }
 
-/* 강점/약점 */
+/* ▼▼▼ [수정] 강점/약점 디자인 개선 (카드형 리스트 + 아이콘 강조) ▼▼▼ */
 .traits-section {
     display: grid;
     grid-template-columns: 1fr;
-    gap: clamp(0.75rem, 2.5vw, 1rem);
-    margin-bottom: clamp(1rem, 3vw, 1.5rem);
+    gap: clamp(1rem, 3vw, 1.5rem); /* 간격 넓힘 */
+    margin-bottom: clamp(1.5rem, 4vw, 2rem);
 }
 
 .trait-card {
-    padding: clamp(1rem, 3vw, 1.25rem);
-    border-radius: clamp(10px, 2.5vw, 12px);
-    box-shadow: var(--shadow-sm);
+    padding: clamp(1.25rem, 3.5vw, 1.5rem);
+    border-radius: 16px; /* 더 둥글게 */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* 부드러운 그림자 */
+    border: 1px solid rgba(255,255,255,0.6); /* 은은한 테두리 */
+    transition: transform 0.3s ease;
 }
 
+.trait-card:hover {
+    transform: translateY(-3px); /* 살짝 떠오르는 효과 */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+/* 강점 카드: 산뜻한 녹색 그라데이션 */
 .strengths-card {
-    background: linear-gradient(135deg, #E8F5E9 0%, #C8E6C9 100%);
-    border-left: 4px solid var(--accent-green);
+    background: linear-gradient(135deg, #F1F8E9 0%, #DCEDC8 100%);
 }
 
+/* 약점 카드: 따뜻한 오렌지 그라데이션 */
 .weaknesses-card {
-    background: linear-gradient(135deg, #FFF3E0 0%, #FFE0B2 100%);
-    border-left: 4px solid var(--accent-orange);
+    background: linear-gradient(135deg, #FFF8E1 0%, #FFE0B2 100%);
 }
 
 .trait-title {
-    font-size: clamp(1rem, 3vw, 1.1rem);
-    font-weight: 700;
+    font-size: clamp(1.1rem, 3.5vw, 1.25rem);
+    font-weight: 800;
     color: var(--text-dark);
-    margin-bottom: clamp(0.5rem, 2vw, 0.75rem);
+    margin-bottom: 1rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid rgba(0,0,0,0.05); /* 제목 아래 구분선 */
 }
 
 .trait-list {
@@ -248,28 +346,53 @@ body {
 }
 
 .trait-list li {
-    padding: clamp(0.4rem, 1.5vw, 0.5rem) 0;
-    color: var(--text-gray);
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
-    line-height: 1.5;
-    position: relative;
-    padding-left: clamp(1.25rem, 3.5vw, 1.5rem);
+    /* 리스트 아이템을 작은 카드로 만듦 */
+    padding: 0.7rem 0.9rem;
+    margin-bottom: 0.6rem;
+    color: var(--text-dark);
+    font-size: clamp(0.9rem, 2.5vw, 0.95rem);
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.6); /* 반투명 흰색 배경 */
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px; /* 아이콘과 텍스트 사이 간격 */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.02);
 }
 
+.trait-list li:last-child {
+    margin-bottom: 0;
+}
+
+/* 아이콘 스타일링 (텍스트 대신 동그란 배지로 변경) */
 .strengths-card .trait-list li::before {
-    content: '✓';
-    position: absolute;
-    left: 0;
-    color: var(--accent-green);
-    font-weight: 700;
+    content: '✔';
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #66BB6A; /* 진한 녹색 원 */
+    color: white;
+    border-radius: 50%;
+    font-size: 0.75rem;
+    flex-shrink: 0; /* 크기 고정 */
+    font-weight: bold;
 }
 
 .weaknesses-card .trait-list li::before {
     content: '!';
-    position: absolute;
-    left: 0;
-    color: var(--accent-orange);
-    font-weight: 700;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background: #FF9800; /* 진한 주황색 원 */
+    color: white;
+    border-radius: 50%;
+    font-size: 0.85rem;
+    flex-shrink: 0;
+    font-weight: 900;
 }
 
 /* 프로그램 섹션 */
@@ -285,11 +408,15 @@ body {
     box-shadow: var(--shadow-md);
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    
+    position: relative; 
+    z-index: 1; 
 }
 
 .program-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    z-index: 50; 
 }
 
 .base-program {
@@ -297,9 +424,10 @@ body {
     background: linear-gradient(135deg, #F0F7FF 0%, #E3F2FD 100%);
 }
 
+/* [수정] 대안 프로그램 색상 변경 (보라색 -> 틸/민트색) */
 .alternative-program {
-    border-color: #9C27B0;
-    background: linear-gradient(135deg, #F3E5F5 0%, #E1BEE7 100%);
+    border-color: var(--accent-teal); /* 틸 색상으로 변경 */
+    background: linear-gradient(135deg, #E0F2F1 0%, #B2DFDB 100%); /* 민트 계열 그라데이션 */
 }
 
 .program-header {
@@ -311,10 +439,20 @@ body {
     gap: 0.5rem;
 }
 
+/* 제목 형광펜 효과 */
 .program-header h3 {
-    font-size: clamp(1rem, 3vw, 1.1rem);
-    font-weight: 700;
+    font-size: clamp(1.05rem, 3vw, 1.2rem);
+    font-weight: 800;
     color: var(--text-dark);
+    background: linear-gradient(120deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0) 100%);
+    box-shadow: inset 0 -8px 0 rgba(74, 144, 255, 0.15); /* 기본: 파란색 강조선 */
+    padding: 0 4px;
+    display: inline-block;
+}
+
+/* [수정] 대안 프로그램 제목 형광펜 색상 변경 */
+.alternative-program .program-header h3 {
+    box-shadow: inset 0 -8px 0 rgba(0, 150, 136, 0.2); /* 틸/민트색 강조선 */
 }
 
 .program-badge {
@@ -330,8 +468,9 @@ body {
     color: white;
 }
 
+/* [수정] 대안 프로그램 배지 색상 변경 */
 .program-badge.alternative {
-    background: #9C27B0;
+    background: var(--accent-teal); /* 틸 색상 */
     color: white;
 }
 
@@ -349,14 +488,73 @@ body {
     margin: 0;
 }
 
-/* 리스트 아이템 + 화살표 버튼 */
+/* 리스트 아이템 */
 .program-item {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
+    padding: clamp(0.7rem, 1.5vw, 0.9rem) 0; 
     border-bottom: 1px solid var(--border-color);
+    
+    position: relative;
+    transition: all 0.2s ease;
+    cursor: pointer; 
 }
+
+.program-item:hover {
+    background-color: rgba(0, 0, 0, 0.02); 
+    z-index: 100;
+}
+
+/* [수정] 마감된 프로그램 스타일 초기화 (모집중과 디자인 동일하게) */
+/* 기존의 회색/취소선 스타일 제거됨 */
+.program-item.closed .program-text {
+    color: var(--text-dark); /* 일반 색상 유지 */
+    text-decoration: none; /* 취소선 제거 */
+}
+
+/* 커서도 일반 포인터 유지 */
+.program-item.closed {
+    cursor: pointer; 
+    opacity: 1; /* 투명도 원복 */
+}
+
+/* 숨김 클래스 */
+.program-item.hidden {
+    display: none;
+}
+
+
+/* 프로그램 호버 이미지 프리뷰 */
+.program-preview {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    margin-top: 8px;
+    width: 220px;
+    padding: 8px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(4px);
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 9999;
+}
+
+.program-preview img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.program-item:hover .program-preview {
+    opacity: 1;
+    transform: translateY(0);
+}
+
 
 .program-item:last-child {
     border-bottom: none;
@@ -364,37 +562,46 @@ body {
 
 .program-text {
     flex: 1;
-    color: var(--text-gray);
-    font-size: clamp(0.85rem, 2.5vw, 0.95rem);
+    color: var(--text-dark); 
+    font-size: clamp(0.9rem, 2.5vw, 1rem);
     line-height: 1.5;
     padding-right: 0.75rem;
+    font-weight: 700; 
 }
 
-/* 화살표 버튼 */
-.program-arrow {
-    width: 32px;
-    height: 32px;
-    min-width: 32px;
-    background: var(--primary-blue);
-    border: none;
-    border-radius: 50%;
-    color: #ffffff;
-    cursor: pointer;
-    display: flex;
+/* 프로그램 상태 뱃지 */
+.status-badge {
+    font-size: 0.7rem;
+    padding: 4px 8px; 
+    border-radius: 12px; 
+    margin-right: 10px;
+    font-weight: 800;
+    white-space: nowrap;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05); 
+    display: inline-flex;
     align-items: center;
     justify-content: center;
-    box-shadow: var(--shadow-sm);
-    transition: all 0.25s ease;
+    min-width: 50px;
 }
 
-.program-arrow svg {
-    width: 18px;
-    height: 18px;
+/* 모집중: 청량한 블루 */
+.status-badge.active {
+    background: linear-gradient(135deg, #E3F2FD 0%, #BBDEFB 100%);
+    color: #1976D2;
+    border: 1px solid #90CAF9;
 }
 
-.program-arrow:hover {
-    background: var(--secondary-blue);
-    transform: translateX(3px);
+/* 마감: 차분한 그레이 (뱃지만 구분을 위해 유지) */
+.status-badge.closed {
+    background: #F5F5F5;
+    color: #9E9E9E;
+    border: 1px solid #E0E0E0;
+}
+
+
+/* 화살표 버튼 제거 */
+.program-arrow {
+    display: none;
 }
 
 /* 액션 섹션 */
@@ -604,4 +811,38 @@ body {
         animation: none !important;
         transition: none !important;
     }
+}
+
+/* 캡처 전용 강제 스타일 */
+body.capture-mode {
+    overflow: hidden !important; 
+    background: #ffffff !important; 
+}
+
+body.capture-mode .container {
+    height: auto !important;
+    min-height: auto !important;
+    overflow: visible !important;
+    border-radius: 0 !important; 
+    box-shadow: none !important;
+    margin: 0 auto !important;
+}
+
+body.capture-mode .result-content {
+    height: auto !important;
+    overflow: visible !important;
+    flex: none !important;
+    display: block !important;
+    padding-bottom: 2rem !important;
+}
+
+/* 캡처 시 숨길 요소들 */
+body.capture-mode .action-section,      
+body.capture-mode .back-button,         
+body.capture-mode .toggle-wrapper,      
+body.capture-mode .screenshot-loading,  
+body.capture-mode .header,              
+body.capture-mode .programs-section,    
+body.capture-mode .program-preview {    
+    display: none !important;
 }

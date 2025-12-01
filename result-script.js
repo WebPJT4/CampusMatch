@@ -3,6 +3,7 @@ class ResultManager {
         this.userName = '';
         this.resultType = '';
         this.answers = [];
+        this.showOnlyRecruiting = false; 
         this.init();
     }
     
@@ -14,14 +15,11 @@ class ResultManager {
         this.userName = sessionStorage.getItem('userName') || '사용자';
         this.answers = this.decodeAnswers(encodedAnswers);
         
-        // 유형별 이미지 프리로드
         this.preloadCharacterImage();
-        
         this.displayResult();
         this.setupEventListeners();
     }
     
-    // 캐릭터 이미지 프리로드
     preloadCharacterImage() {
         const typeData = personalityTypes[this.resultType];
         if (typeData && typeData.characterImage) {
@@ -35,23 +33,15 @@ class ResultManager {
         try {
             let binaryStr = parseInt(encoded, 36).toString(2);
             binaryStr = binaryStr.padStart(15, '0');
-            
             const types = ['S/I', 'O/P', 'D/W', 'S/I', 'D/W', 'S/I', 'O/P', 'S/I', 'D/W', 'O/P', 'O/P', 'D/W', 'S/I', 'O/P', 'D/W'];
             const answers = [];
-            
             for (let i = 0; i < 15; i++) {
                 const bit = binaryStr[i];
                 const type = types[i];
-                
-                if (type === 'S/I') {
-                    answers.push(bit === '0' ? 'S' : 'I');
-                } else if (type === 'D/W') {
-                    answers.push(bit === '0' ? 'D' : 'W');
-                } else if (type === 'O/P') {
-                    answers.push(bit === '0' ? 'O' : 'P');
-                }
+                if (type === 'S/I') answers.push(bit === '0' ? 'S' : 'I');
+                else if (type === 'D/W') answers.push(bit === '0' ? 'D' : 'W');
+                else if (type === 'O/P') answers.push(bit === '0' ? 'O' : 'P');
             }
-            
             return answers;
         } catch (e) {
             console.error('Decode error:', e);
@@ -59,43 +49,86 @@ class ResultManager {
         }
     }
 
-    // 프로그램 리스트 아이템 생성 (텍스트 + 화살표 버튼)
+    checkIsClosed(deadlineStr) {
+        if (!deadlineStr) return false;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        const deadline = new Date(deadlineStr);
+        if (isNaN(deadline.getTime())) return false;
+        return today > deadline;
+    }
+
+    // [수정됨] 화살표 버튼 제거 및 리스트 클릭 이벤트 추가
     createProgramItem(program) {
-        // program 이 문자열이면 텍스트만, 객체면 {title, link} 형식으로 사용 (link는 안 씀)
-        const text = typeof program === 'string'
-            ? program
-            : (program.title || program.name || '');
+        const programObj = typeof program === 'string' ? { title: program, link: '', image: null, deadline: null } : program;
+        const text = programObj.title || programObj.name || '';
+        const image = programObj.image || null;
+        const deadline = programObj.deadline || null;
+        const isClosed = this.checkIsClosed(deadline);
 
         const li = document.createElement('li');
         li.classList.add('program-item');
+        if (isClosed) {
+            li.classList.add('closed');
+            li.dataset.status = 'closed';
+        } else {
+            li.dataset.status = 'active';
+        }
 
+        // 상태 배지 (디자인 수정됨 in CSS)
+        const badgeSpan = document.createElement('span');
+        badgeSpan.className = `status-badge ${isClosed ? 'closed' : 'active'}`;
+        badgeSpan.textContent = isClosed ? '마감' : '모집중';
+        
         const textSpan = document.createElement('span');
         textSpan.className = 'program-text';
         textSpan.textContent = text;
-        li.appendChild(textSpan);
+        
+        const contentWrapper = document.createElement('div');
+        contentWrapper.style.display = 'flex';
+        contentWrapper.style.alignItems = 'center';
+        contentWrapper.style.flex = '1';
+        
+        contentWrapper.appendChild(badgeSpan);
+        contentWrapper.appendChild(textSpan);
+        li.appendChild(contentWrapper);
 
-        // 화살표 버튼 (항상 생성)
-        const button = document.createElement('button');
-        button.className = 'program-arrow';
-        // 검색용으로 제목 저장
-        button.dataset.programTitle = text;
+        // 이미지 프리뷰
+        if (image) {
+            const preview = document.createElement('div');
+            preview.className = 'program-preview';
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = text;
+            preview.appendChild(img);
+            li.appendChild(preview);
+        }
 
-        button.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-        `;
+        // [요청 2] 화살표 버튼 삭제됨 (기존 코드 제거)
 
-        li.appendChild(button);
+        // [요청 2] 리스트 전체 클릭 시 링크 이동
+        if (programObj.link && !isClosed) {
+            li.addEventListener('click', () => window.open(programObj.link, '_blank'));
+        } else if (isClosed) {
+            // 마감된 경우 클릭 불가 스타일은 CSS로 처리
+        }
+        
         return li;
     }
     
+    filterPrograms() {
+        const items = document.querySelectorAll('.program-item');
+        items.forEach(item => {
+            if (this.showOnlyRecruiting && item.dataset.status === 'closed') {
+                item.classList.add('hidden');
+            } else {
+                item.classList.remove('hidden');
+            }
+        });
+    }
+
     displayResult() {
         const typeData = personalityTypes[this.resultType];
-        
         document.getElementById('userNameDisplay').textContent = this.userName;
         document.getElementById('typeTitle').textContent = typeData.title;
         document.getElementById('typeBadge').textContent = typeData.nickname;
@@ -103,15 +136,10 @@ class ResultManager {
         const characterImg = document.getElementById('resultCharacter');
         characterImg.src = typeData.characterImage;
         characterImg.alt = typeData.nickname;
-        
-        characterImg.onerror = () => {
-            console.warn(`캐릭터 이미지 로드 실패: ${typeData.characterImage}`);
-            characterImg.src = 'images/characters/default-character.png';
-        };
+        characterImg.onerror = () => { characterImg.src = 'images/characters/default-character.png'; };
         
         document.getElementById('descriptionText').textContent = typeData.description;
         
-        // 강점
         const strengthsList = document.getElementById('strengthsList');
         strengthsList.innerHTML = '';
         typeData.strengths.forEach(strength => {
@@ -120,7 +148,6 @@ class ResultManager {
             strengthsList.appendChild(li);
         });
         
-        // 약점
         const weaknessesList = document.getElementById('weaknessesList');
         weaknessesList.innerHTML = '';
         typeData.weaknesses.forEach(weakness => {
@@ -129,7 +156,6 @@ class ResultManager {
             weaknessesList.appendChild(li);
         });
         
-        // 기본 프로그램
         const baseProgramList = document.getElementById('baseProgramList');
         baseProgramList.innerHTML = '';
         typeData.basePrograms.forEach(program => {
@@ -137,82 +163,124 @@ class ResultManager {
             baseProgramList.appendChild(item);
         });
         
-        // 대안 프로그램
         const alternativeProgramList = document.getElementById('alternativeProgramList');
         alternativeProgramList.innerHTML = '';
         typeData.alternativePrograms.forEach(program => {
             const item = this.createProgramItem(program);
             alternativeProgramList.appendChild(item);
         });
+        
+        this.filterPrograms();
     }
     
     setupEventListeners() {
+        // [요청 4] 온스타 바로가기 링크 수정
         document.getElementById('viewPrograms').addEventListener('click', () => {
-            alert('온스타에서 비교과 프로그램을 확인해 보세요!');
+            window.open('https://onstar.jj.ac.kr/', '_blank');
         });
         
         document.getElementById('retakeTest').addEventListener('click', () => {
             sessionStorage.clear();
             window.location.href = 'index.html';
         });
-        
-        document.getElementById('shareResult').addEventListener('click', () => {
-            this.shareResult();
-        });
-        
-        document.getElementById('backButton').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
+        document.getElementById('shareResult').addEventListener('click', () => this.saveAsImage());
+        document.getElementById('backButton').addEventListener('click', () => window.location.href = 'index.html');
 
-        // 화살표 버튼 클릭 시: 제목 복사 + 온스타 메인 열기
-        document.addEventListener('click', async (e) => {
-            const arrow = e.target.closest('.program-arrow');
-            if (!arrow) return;
-
-            // 1) 프로그램 제목 가져오기
-            let title = arrow.dataset.programTitle;
-            if (!title) {
-                const item = arrow.closest('.program-item');
-                const textEl = item?.querySelector('.program-text');
-                title = textEl?.textContent?.trim() || '';
-            }
-
-            // 2) 클립보드 복사 (가능하면)
-            if (title) {
-                const textToCopy = `${title} (전주대 비교과 프로그램 검색용)`;
-                try {
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        await navigator.clipboard.writeText(textToCopy);
-                        alert('프로그램 이름이 복사되었습니다!\n온스타에서 붙여넣기(Ctrl+V) 후 검색하세요.');
-                    } else {
-                        // 구형 브라우저 대응
-                        prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                    }
-                } catch (err) {
-                    console.error('클립보드 복사 실패:', err);
-                    prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                }
-            }
-
-            // 3) 온스타 메인 열기
-            window.open('https://onstar.jj.ac.kr/', '_blank');
-        });
+        const toggleSwitch = document.getElementById('recruitToggle');
+        if (toggleSwitch) {
+            toggleSwitch.addEventListener('change', (e) => {
+                this.showOnlyRecruiting = e.target.checked;
+                this.filterPrograms();
+            });
+        }
     }
     
-    shareResult() {
-        const typeData = personalityTypes[this.resultType];
-        const shareText = `나는 "${typeData.nickname} (${this.resultType})"! 캠퍼스 Match에서 당신의 유형도 확인해보세요!`;
+    // [최종 완성] "유령 복제(Ghost Clone)" 기법
+    async saveAsImage() {
+        if (window.location.protocol === 'file:') {
+            alert('🚨 중요: "file://" 경로로 실행 중입니다. 이미지 누락 가능성이 있습니다.\nVS Code의 [Live Server]를 이용해주세요.');
+        }
+
+        const loading = document.getElementById('screenshotLoading');
+        const container = document.querySelector('.container');
         
-        if (navigator.share) {
-            navigator.share({
-                title: '캠퍼스 Match 결과',
-                text: shareText,
-                url: window.location.href
-            }).catch(err => console.log('공유 취소:', err));
-        } else {
-            navigator.clipboard.writeText(shareText + '\n' + window.location.href)
-                .then(() => alert('결과가 클립보드에 복사되었습니다!'))
-                .catch(err => console.error('복사 실패:', err));
+        loading.style.display = 'flex';
+
+        try {
+            const clone = container.cloneNode(true);
+            clone.id = 'capture-target-clone'; 
+            
+            clone.style.position = 'fixed';
+            clone.style.left = '-10000px';
+            clone.style.top = '0';
+            clone.style.zIndex = '-9999';
+            
+            clone.style.width = container.offsetWidth + 'px'; 
+            clone.style.height = 'auto'; 
+            clone.style.overflow = 'visible'; 
+            
+            const style = document.createElement('style');
+            style.innerHTML = `
+                #capture-target-clone, #capture-target-clone * {
+                    animation: none !important;
+                    transition: none !important;
+                    opacity: 1 !important;
+                }
+            `;
+            document.head.appendChild(style);
+
+            const cloneContent = clone.querySelector('.result-content');
+            if (cloneContent) {
+                cloneContent.style.height = 'auto';
+                cloneContent.style.overflow = 'visible';
+                cloneContent.style.flex = 'none'; 
+                cloneContent.style.display = 'block';
+                cloneContent.style.paddingBottom = '2rem'; 
+            }
+
+            const classesToRemove = [
+                '.header',              
+                '.programs-section',    
+                '.action-section',      
+                '.back-button',         
+                '.toggle-wrapper',      
+                '.screenshot-loading',  
+                '.program-preview'      
+            ];
+
+            classesToRemove.forEach(selector => {
+                const elements = clone.querySelectorAll(selector);
+                elements.forEach(el => el.remove());
+            });
+
+            document.body.appendChild(clone);
+
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            const canvas = await html2canvas(clone, {
+                scale: 2, 
+                useCORS: true,
+                logging: false,
+                backgroundColor: null, 
+                windowWidth: clone.scrollWidth,
+                windowHeight: clone.scrollHeight
+            });
+
+            const link = document.createElement('a');
+            const date = new Date();
+            const dateStr = `${date.getFullYear()}${String(date.getMonth()+1).padStart(2,'0')}${String(date.getDate()).padStart(2,'0')}`;
+            link.download = `CampusMatch_Card_${this.resultType}_${dateStr}.png`;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+
+            document.head.removeChild(style);
+            document.body.removeChild(clone);
+
+        } catch (err) {
+            console.error('캡처 실패:', err);
+            alert('이미지 저장 실패: ' + err.message);
+        } finally {
+            loading.style.display = 'none';
         }
     }
 }
