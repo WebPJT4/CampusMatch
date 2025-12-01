@@ -569,6 +569,21 @@ input:checked + .slider:before {
     font-weight: 700; 
 }
 
+/* ▼▼▼ [추가] D-Day 태그 디자인 ▼▼▼ */
+.d-day-tag {
+    display: inline-block;
+    margin-left: 8px; /* 제목과 간격 */
+    font-size: 0.75rem;
+    color: #FF5252; /* 경고/강조 느낌의 붉은색 */
+    font-weight: 800;
+    letter-spacing: -0.5px;
+    background-color: rgba(255, 82, 82, 0.1); /* 연한 붉은 배경 */
+    padding: 1px 6px;
+    border-radius: 4px;
+    vertical-align: middle;
+    transform: translateY(-1px); /* 시각적 높이 보정 */
+}
+
 /* 프로그램 상태 뱃지 */
 .status-badge {
     font-size: 0.7rem;
