@@ -1,40 +1,41 @@
 // 8가지 유형별 설명 데이터 - 캐릭터 이미지 추가
+// [수정] 모든 프로그램 데이터에 'deadline' 필드를 추가하고, 
+// 기존 문자열 형태의 alternativePrograms를 객체 형태로 표준화했습니다.
 const personalityTypes = {
     'ODS': {
         title: '전공 스펙을 주도하는',
         nickname: '열정 리더 제이',
-        characterImage: 'images/characters/ODS-leader.png', // 유형별 이미지
+        characterImage: 'images/characters/ODS-leader.png',
         description: '당신은 전공 분야에서 눈에 보이는 성과를 만들어내는 것을 중요하게 생각합니다. 수상, 특허, 프로젝트 실적 등 구체적인 결과물을 팀 프로젝트와 리더십 경험을 통해 달성하고자 하는 목표 지향적인 성향을 가지고 있어요. 동료들과 함께 협력하며 시너지를 내는 과정에서 에너지를 얻고, 팀을 이끌어가는 역할에서 강점을 발휘합니다. 명확한 목표가 있을 때 가장 큰 동기부여를 받으며, 그 목표를 향해 팀원들과 함께 달려가는 과정에서 보람을 느낍니다.',
         strengths: ['목표 지향적 사고', '뛰어난 리더십', '협업 실행력', '추진력'],
         weaknesses: ['단기 성과에 매몰될 수 있음', '경쟁적 환경에서 스트레스', '과정보다 결과 중시'],
        basePrograms: [
             { title: "2025년 캡스톤디자인 온라인 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488684&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ods_bp1.webp" },
+              image: "images/programs/ods_bp1.webp", deadline: "2026-01-30" },
             { title: "졸업생 맞춤형 취업지원 프로그램 [졸업생 밸류업 특공대]", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=478205&article.offset=0&articleLimit=20&srSearchVal=멘토링" ,
-              image: "images/programs/ods_bp2.webp" },
+              image: "images/programs/ods_bp2.webp", deadline: "2026-01-30" },
             { title: "[한국과학기술연구원]전주대학교 학·연 특화 융합연구사업", 
               link: "https://sanhak.jj.ac.kr/sanhak/community/business.jsp?mode=view&article_no=452010&board_wrapper=%2Fsanhak%2Fcommunity%2Fbusiness.jsp&pager.offset=0&board_no=3850" ,
-              image: "images/programs/ods_bp3.webp" },
+              image: "images/programs/ods_bp3.webp", deadline: "2026-01-30" },
             { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ods_bp4.webp"},
+              image: "images/programs/ods_bp4.webp", deadline: "2025-11-30"},
             { title: "AI‧가상융합 콘텐츠 및 아이디어 공모전", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485810&article.offset=60&articleLimit=20" ,
-              image: "images/programs/ods_bp5.webp"}
-        ]
-        ,
+              image: "images/programs/ods_bp5.webp", deadline: "2026-01-30"}
+        ],
         alternativePrograms: [
             { title: "2026학년도 자유전공학부 선배학습멘토(U-SA) 선발 공고",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486031&article.offset=0&articleLimit=20&srSearchVal=팀",
-              image:"images/programs/ods_ap1.webp"},
+              image:"images/programs/ods_ap1.webp", deadline: "2026-01-30"},
             { title: "[RISE사업단] 디지털 최상위 전문인재 양성과정 교육생 모집(멀티클라우드)",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488244&article.offset=0&articleLimit=20",
-              image:"images/programs/ods_ap2.webp"},
+              image:"images/programs/ods_ap2.webp", deadline: "2026-01-30"},
             { title: "[교수학습개발센터] Boost Up 기초 수학 교실 멘티 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484821&article.offset=80&articleLimit=20",
-              image:"images/programs/ods_ap3.webp"}
+              image:"images/programs/ods_ap3.webp", deadline: "2026-01-30"}
         ]
     },
     'ODI': {
@@ -47,28 +48,28 @@ const personalityTypes = {
         basePrograms: [
             { title: "2026년도 과학기술정보통신부 기초연구사업 1차 신규과제 공모 (리더연구)", 
               link: "https://www.nrf.re.kr/biz/info/notice/view?menu_no=378&nts_no=254610&biz_no=142&biz_not_gubn=guide" ,
-              image: "images/programs/odi_bp1.webp"},
+              image: "images/programs/odi_bp1.webp", deadline: "2026-01-30"},
             { title: "[대외협력홍보실] 홍보 콘텐츠 제작 애자일 직무 인턴 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485519&article.offset=60&articleLimit=20" ,
-              image: "images/programs/odi_bp2.webp"},
+              image: "images/programs/odi_bp2.webp", deadline: "2026-01-30"},
             { title: "[교수학습개발센터] 2025-2학기 JJ 코넬노트 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=490182&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-              image: "images/programs/odi_bp3.webp"},
+              image: "images/programs/odi_bp3.webp", deadline: "2026-01-30"},
             { title: "[진로개발센터] 2025학년도 나만의 커리어패스 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485817&article.offset=0&articleLimit=20&srSearchVal=경진" ,
-              image: "images/programs/odi_bp4.webp"},
+              image: "images/programs/odi_bp4.webp", deadline: "2026-01-30"},
             { title: "2025-2학기 디지털역량강화교육 컴퓨터자격증반 운영 안내 (ACP 프로그램 / 컴퓨터활용능력 1급 및 2급)", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484599&article.offset=100&articleLimit=20" ,
-              image: "images/programs/odi_bp5.webp"}
+              image: "images/programs/odi_bp5.webp", deadline: "2026-01-30"}
         ]
         ,
         alternativePrograms: [
             { title: "「JST 문제해결형 프로젝트 Lab」 참여자 추가 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485613&article.offset=60&articleLimit=20",
-              image:"images/programs/odi_ap1.webp"},
+              image:"images/programs/odi_ap1.webp", deadline: "2026-01-30"},
             { title: "RISE사업단, 오픈형 클라우드 및 AI 실습 교육",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486507&article.offset=40&articleLimit=20",
-              image:"images/programs/odi_ap2.webp"}
+              image:"images/programs/odi_ap2.webp", deadline: "2026-01-30"}
         ]
     },
     'OWS': {
@@ -81,28 +82,28 @@ const personalityTypes = {
         basePrograms: [
             { title: "[원격교육지원센터] 2025 K-MOOC 서포터즈 모집 안내", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486606&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ows_bp1.webp"},
+              image: "images/programs/ows_bp1.webp", deadline: "2026-01-30"},
             { title: "「2025 전주시 국제기구 청년인턴 프로그램」 참가자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487876&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ows_bp2.webp"},
+              image: "images/programs/ows_bp2.webp", deadline: "2026-01-30"},
             { title: "[창업지원단] (창업캠프)'로컬 인사이트 트립 in공주' 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=489779&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ows_bp3.webp"},
+              image: "images/programs/ows_bp3.webp", deadline: "2026-01-30"},
             { title: "[창업창직센터] 제1회 전북 RISE IR 캠프 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=495641&article.offset=0&articleLimit=20&srSearchVal=팀" ,
-              image: "images/programs/ows_bp4.webp"},
+              image: "images/programs/ows_bp4.webp", deadline: "2026-01-30"},
             { title: "[인문사회융합인재양성사업단] 2025 L-HUSS in the World 해외 탐방(싱가포르) 학생 선발", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=488552&article.offset=0&articleLimit=20" ,
-              image: "images/programs/ows_bp5.webp"}
+              image: "images/programs/ows_bp5.webp", deadline: "2026-01-30"}
         ]
         ,
         alternativePrograms: [
             { title: "2026학년도 중화권 파견 교환학생 선발 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487862&article.offset=20&articleLimit=20",
-              image:"images/programs/ows_ap1.webp"},
+              image:"images/programs/ows_ap1.webp", deadline: "2026-01-30"},
             { title: "[사회봉사센터] 2025 국립국제교육원 단기해외교육봉사 모집",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485890&article.offset=40&articleLimit=20",
-              image:"images/programs/ows_ap2.webp"}
+              image:"images/programs/ows_ap2.webp", deadline: "2026-01-30"}
         ]
     },
     'OWI': {
@@ -115,34 +116,34 @@ const personalityTypes = {
         basePrograms: [
             { title: "[빅데이터센터] 빅데이터 분석 경진대회 캠프", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487421&article.offset=20&articleLimit=20" ,
-              image: "images/programs/ods_bp4.webp"},
+              image: "images/programs/ods_bp4.webp", deadline: "2026-01-30"},
             { title: "2025학년도 2학기 JJ필독서 경진대회", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485663&article.offset=60&articleLimit=20" ,
-              image: "images/programs/owi_bp2.webp"},
+              image: "images/programs/owi_bp2.webp", deadline: "2026-01-30"},
             { title: "「JST 토익스피킹 톡!톡! 클래스 프로그램」 2차 추가모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485901&article.offset=40&articleLimit=20" ,
-              image: "images/programs/owi_bp3.webp"},
+              image: "images/programs/owi_bp3.webp", deadline: "2026-01-30"},
             { title: "[전주시/창업지원단] 2025년 전주기업반 취업지원사업 참여자 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486216&article.offset=40&articleLimit=20" ,
-              image: "images/programs/owi_bp4.webp"},
+              image: "images/programs/owi_bp4.webp", deadline: "2026-01-30"},
             { title: "[창업지원단] 전주대×홍익대×목원대 '로컬크리에이터 양성을 위한 포럼' 참여 학생 모집", 
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=487126&article.offset=20&articleLimit=20" ,
-              image: "images/programs/owi_bp5.webp"}
+              image: "images/programs/owi_bp5.webp", deadline: "2026-01-30"}
         ]
         ,
         alternativePrograms: [
             { title: "[교수학습개발센터] 2025-2학기 AI 활용 맞춤형 A+글쓰기 교실",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484845&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap1.webp"},
+              image:"images/programs/owi_ap1.webp", deadline: "2026-01-30"},
             { title: "[교수학습개발센터] 2025-2학기 Boost Up 기초영어교실 모집 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=484841&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap2.webp"},
+              image:"images/programs/owi_ap2.webp", deadline: "2026-01-30"},
             { title: "[교수학습개발센터] 학습전략워크숍(JJ 코넬노트, JJ 학습플래너) 운영 안내",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=486045&article.offset=40&articleLimit=20",
-              image:"images/programs/owi_ap3.webp"},
+              image:"images/programs/owi_ap3.webp", deadline: "2026-01-30"},
             { title: "2025학년도 창업장학금 안내(창업마일리지 적립 및 배점표)",
               link: "https://www.jj.ac.kr/jj/community/notice01.do?mode=view&articleNo=485186&article.offset=80&articleLimit=20",
-              image:"images/programs/owi_ap4.webp"}
+              image:"images/programs/owi_ap4.webp", deadline: "2026-01-30"}
         ]
     },
     'PDS': {
@@ -153,18 +154,17 @@ const personalityTypes = {
         strengths: ['강한 지적 호기심', '뛰어난 협업 시너지', '높은 적응력', '공감 능력'],
         weaknesses: ['취업 준비 소홀할 수 있음', '타인 의존 경향', '현실 감각 부족'],
        basePrograms: [
-    { title: "온스타 멘토링 – 전공 멘토/튜티", link: "https://onstar.jj.ac.kr/program/9092" },
-    { title: "전공 학회 세미나 및 스터디 그룹", link: "https://onstar.jj.ac.kr/program/9361" },
-    { title: "교수-학생 연구 참여 프로그램", link: "https://onstar.jj.ac.kr/program/9263" },
-    { title: "학습법 특강 – 효과적인 학습전략", link: "https://onstar.jj.ac.kr/program/9529" },
-    { title: "성적 향상 튜터링(협업 중심)", link: "https://onstar.jj.ac.kr/program/9486" }
-]
-,
+            { title: "온스타 멘토링 – 전공 멘토/튜티", link: "https://onstar.jj.ac.kr/program/9092", deadline: "2026-01-30" },
+            { title: "전공 학회 세미나 및 스터디 그룹", link: "https://onstar.jj.ac.kr/program/9361", deadline: "2026-01-30" },
+            { title: "교수-학생 연구 참여 프로그램", link: "https://onstar.jj.ac.kr/program/9263", deadline: "2026-01-30" },
+            { title: "학습법 특강 – 효과적인 학습전략", link: "https://onstar.jj.ac.kr/program/9529", deadline: "2026-01-30" },
+            { title: "성적 향상 튜터링(협업 중심)", link: "https://onstar.jj.ac.kr/program/9486", deadline: "2026-01-30" }
+        ],
         alternativePrograms: [
-            '정기 학년별 학과 세미나',
-            '안정적 튜터링 참여',
-            '교수 프로그램 꾸준히 이수',
-            '후기 제출 프로그램'
+            { title: '정기 학년별 학과 세미나', link: '', deadline: "2026-01-30" },
+            { title: '안정적 튜터링 참여', link: '', deadline: "2026-01-30" },
+            { title: '교수 프로그램 꾸준히 이수', link: '', deadline: "2026-01-30" },
+            { title: '후기 제출 프로그램', link: '', deadline: "2026-01-30" }
         ]
     },
     'PDI': {
@@ -175,18 +175,17 @@ const personalityTypes = {
         strengths: ['깊은 지적 탐구심', '뛰어난 몰입력', '독립적 성장', '전문 지식'],
         weaknesses: ['사회성 부족', '정보 교류 취약', '현실 감각 약함'],
         basePrograms: [
-    { title: "MOOC·K-MOOC 전공 심화 학습", link: "https://onstar.jj.ac.kr/program/9315" },
-    { title: "논문·리포트 작성 심화 특강", link: "https://onstar.jj.ac.kr/program/9101" },
-    { title: "도서관 학술 DB 활용 교육", link: "https://onstar.jj.ac.kr/program/9554" },
-    { title: "전공 교수 연구세미나(소규모)", link: "https://onstar.jj.ac.kr/program/9361" },
-    { title: "편입·복학생 학습적응 세미나", link: "https://onstar.jj.ac.kr/program/9517" }
-]
-,
+            { title: "MOOC·K-MOOC 전공 심화 학습", link: "https://onstar.jj.ac.kr/program/9315", deadline: "2026-01-30" },
+            { title: "논문·리포트 작성 심화 특강", link: "https://onstar.jj.ac.kr/program/9101", deadline: "2026-01-30" },
+            { title: "도서관 학술 DB 활용 교육", link: "https://onstar.jj.ac.kr/program/9554", deadline: "2026-01-30" },
+            { title: "전공 교수 연구세미나(소규모)", link: "https://onstar.jj.ac.kr/program/9361", deadline: "2026-01-30" },
+            { title: "편입·복학생 학습적응 세미나", link: "https://onstar.jj.ac.kr/program/9517", deadline: "2026-01-30" }
+        ],
         alternativePrograms: [
-            '기초·중급 주제 수강',
-            '논문 작성 첫걸음 강의',
-            '학사 멘토링 추천',
-            '큐레이션된 강의'
+            { title: '기초·중급 주제 수강', link: '', deadline: "2026-01-30" },
+            { title: '논문 작성 첫걸음 강의', link: '', deadline: "2026-01-30" },
+            { title: '학사 멘토링 추천', link: '', deadline: "2026-01-30" },
+            { title: '큐레이션된 강의', link: '', deadline: "2026-01-30" }
         ]
     },
     'PWS': {
@@ -197,18 +196,17 @@ const personalityTypes = {
         strengths: ['뛰어난 친화력', '넘치는 에너지', '높은 공감 능력', '빠른 적응력'],
         weaknesses: ['한 분야 깊이 부족', '감정 소모 큼', '성과 압박에 취약'],
        basePrograms: [
-    { title: "해외 봉사·국제 문화 교류 프로그램", link: "https://onstar.jj.ac.kr/program/9448" },
-    { title: "온스타 힐링캠프(힐링·관계중심)", link: "https://onstar.jj.ac.kr/program/9633" },
-    { title: "문화·예술·봉사 동아리 지원", link: "https://onstar.jj.ac.kr/program/9581" },
-    { title: "상담센터 집단 상담 프로그램", link: "https://onstar.jj.ac.kr/program/9098" },
-    { title: "소그룹 탐방/프로젝트 활동", link: "https://onstar.jj.ac.kr/program/9483" }
-]
-,
+            { title: "해외 봉사·국제 문화 교류 프로그램", link: "https://onstar.jj.ac.kr/program/9448", deadline: "2026-01-30" },
+            { title: "온스타 힐링캠프(힐링·관계중심)", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" },
+            { title: "문화·예술·봉사 동아리 지원", link: "https://onstar.jj.ac.kr/program/9581", deadline: "2026-01-30" },
+            { title: "상담센터 집단 상담 프로그램", link: "https://onstar.jj.ac.kr/program/9098", deadline: "2026-01-30" },
+            { title: "소그룹 탐방/프로젝트 활동", link: "https://onstar.jj.ac.kr/program/9483", deadline: "2026-01-30" }
+        ],
         alternativePrograms: [
-            '상담센터 집단상담',
-            '저강도 봉사 활동',
-            '후기 캡처형 비교과',
-            '마음챙김 캠페인'
+            { title: '상담센터 집단상담', link: '', deadline: "2026-01-30" },
+            { title: '저강도 봉사 활동', link: '', deadline: "2026-01-30" },
+            { title: '후기 캡처형 비교과', link: '', deadline: "2026-01-30" },
+            { title: '마음챙김 캠페인', link: '', deadline: "2026-01-30" }
         ]
     },
     'PWI': {
@@ -219,18 +217,17 @@ const personalityTypes = {
         strengths: ['뚜렷한 주관', '높은 창의성', '깊은 자기성찰', '정서적 안정'],
         weaknesses: ['경쟁력 부족', '네트워킹 취약', '현실 감각 부족', '조직 적응력 낮음'],
        basePrograms: [
-    { title: "명상·스트레스 관리 프로그램", link: "https://onstar.jj.ac.kr/program/9633" },
-    { title: "헬스장·수영장 교내 웰빙 패스", link: "https://onstar.jj.ac.kr/program/9221" },
-    { title: "인문학·예술·철학 교양 특강", link: "https://onstar.jj.ac.kr/program/9554" },
-    { title: "온라인 취미 클래스 지원", link: "https://onstar.jj.ac.kr/program/9479" },
-    { title: "마음챙김 힐링 챌린지", link: "https://onstar.jj.ac.kr/program/9633" }
-]
-,
+            { title: "명상·스트레스 관리 프로그램", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" },
+            { title: "헬스장·수영장 교내 웰빙 패스", link: "https://onstar.jj.ac.kr/program/9221", deadline: "2026-01-30" },
+            { title: "인문학·예술·철학 교양 특강", link: "https://onstar.jj.ac.kr/program/9554", deadline: "2026-01-30" },
+            { title: "온라인 취미 클래스 지원", link: "https://onstar.jj.ac.kr/program/9479", deadline: "2026-01-30" },
+            { title: "마음챙김 힐링 챌린지", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" }
+        ],
         alternativePrograms: [
-            '기초 체력 관리 코스',
-            '초급 취미·독서 프로그램',
-            '멘토링·상담사 연계',
-            '1:1 자기관리 상담'
+            { title: '기초 체력 관리 코스', link: '', deadline: "2026-01-30" },
+            { title: '초급 취미·독서 프로그램', link: '', deadline: "2026-01-30" },
+            { title: '멘토링·상담사 연계', link: '', deadline: "2026-01-30" },
+            { title: '1:1 자기관리 상담', link: '', deadline: "2026-01-30" }
         ]
     }
 };

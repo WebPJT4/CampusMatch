@@ -71,9 +71,19 @@
 
             <!-- 추천 프로그램 섹션 -->
             <div class="programs-section">
-                <div class="section-header">
-                    <h2>📚 추천 프로그램</h2>
-                    <p class="section-subtitle">당신의 성향에 꼭 맞는 활동을 찾아보세요!</p>
+                <div class="section-header program-header-wrapper">
+                    <div>
+                        <h2>📚 추천 프로그램</h2>
+                        <p class="section-subtitle">당신의 성향에 꼭 맞는 활동을 찾아보세요!</p>
+                    </div>
+                    <!-- [추가] 모집 중만 보기 토글 스위치 -->
+                    <div class="toggle-wrapper">
+                        <label class="switch">
+                            <input type="checkbox" id="recruitToggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label">모집 중만 보기</span>
+                    </div>
                 </div>
 
                 <!-- 기본 추천 -->

@@ -3,6 +3,7 @@ class ResultManager {
         this.userName = '';
         this.resultType = '';
         this.answers = [];
+        this.showOnlyRecruiting = false; // [추가] 토글 상태 관리 (기본값: false - 전체 보기)
         this.init();
     }
     
@@ -59,24 +60,69 @@ class ResultManager {
         }
     }
 
+    // [수정] 프로그램 마감 여부 확인 함수
+    checkIsClosed(deadlineStr) {
+        if (!deadlineStr) return false; // 마감일 없으면 오픈으로 간주
+        
+        const today = new Date();
+        // 시간을 00:00:00으로 맞춰서 날짜만 비교 (선택 사항)
+        today.setHours(0, 0, 0, 0);
+        
+        const deadline = new Date(deadlineStr);
+        // deadline이 유효한 날짜인지 확인
+        if (isNaN(deadline.getTime())) return false;
+
+        // 마감일이 오늘보다 이전이면 마감됨 (today > deadline)
+        return today > deadline;
+    }
+
     // 프로그램 리스트 아이템 생성 (텍스트 + 화살표 버튼)
     createProgramItem(program) {
-        // program 이 문자열이면 텍스트만, 객체면 {title, link} 형식으로 사용 (link는 안 씀)
-        const text = typeof program === 'string'
-            ? program
-            : (program.title || program.name || '');
+        // program 이 문자열이면 텍스트만, 객체면 {title, link} 형식으로 사용
+        // [수정] 문자열인 경우 객체로 변환하여 처리 (데드라인 기본값 없음)
+        const programObj = typeof program === 'string' 
+            ? { title: program, link: '', image: null, deadline: null } 
+            : program;
 
-        const image = (typeof program === 'object' && program.image)
-            ? program.image
-            : null; // image가 없으면 프리뷰 안 만들기
+        const text = programObj.title || programObj.name || '';
+        const image = programObj.image || null;
+        const deadline = programObj.deadline || null;
+
+        // [추가] 마감 여부 확인
+        const isClosed = this.checkIsClosed(deadline);
 
         const li = document.createElement('li');
         li.classList.add('program-item');
+        
+        // [추가] 마감 상태 및 토글 필터링을 위한 데이터 속성 추가
+        if (isClosed) {
+            li.classList.add('closed');
+            li.dataset.status = 'closed';
+        } else {
+            li.dataset.status = 'active';
+        }
 
+        // [추가] 텍스트 앞 배지 (모집중/마감)
+        const badgeSpan = document.createElement('span');
+        badgeSpan.className = `status-badge ${isClosed ? 'closed' : 'active'}`;
+        badgeSpan.textContent = isClosed ? '마감' : '모집중';
+        
         const textSpan = document.createElement('span');
         textSpan.className = 'program-text';
         textSpan.textContent = text;
-        li.appendChild(textSpan);
+        
+        // 배지를 텍스트 앞에 붙임
+        // li.appendChild(badgeSpan); // 디자인상 텍스트와 묶거나 따로 둘 수 있음. 여기선 li에 바로 추가.
+        
+        // 텍스트 래퍼 (배지 + 텍스트 정렬용)
+        const contentWrapper = document.createElement('div');
+        contentWrapper.style.display = 'flex';
+        contentWrapper.style.alignItems = 'center';
+        contentWrapper.style.flex = '1';
+        
+        contentWrapper.appendChild(badgeSpan);
+        contentWrapper.appendChild(textSpan);
+        li.appendChild(contentWrapper);
 
         // 이미지 프리뷰 박스 추가 (있을 때만)
         if (image) {
@@ -107,17 +153,32 @@ class ResultManager {
             </svg>
         `;
 
-        // 링크가 있으면 버튼 누르면 새 탭으로 이동
-        if (typeof program === 'object' && program.link) {
+        // 링크가 있고 마감되지 않았을 때만 이동
+        if (programObj.link && !isClosed) {
             button.addEventListener('click', () => {
-            window.open(program.link, '_blank');  // 새 탭으로 열기
-        });
+                window.open(programObj.link, '_blank');  // 새 탭으로 열기
+            });
+        } else if (isClosed) {
+            // 마감된 경우 버튼 비활성화 느낌 (CSS로 처리했지만 클릭 방지)
+            button.disabled = true;
         }
 
         li.appendChild(button);
         return li;
     }
     
+    // [추가] 토글 상태에 따라 리스트 필터링
+    filterPrograms() {
+        const items = document.querySelectorAll('.program-item');
+        items.forEach(item => {
+            if (this.showOnlyRecruiting && item.dataset.status === 'closed') {
+                item.classList.add('hidden'); // 모집중만 보기 + 마감됨 -> 숨김
+            } else {
+                item.classList.remove('hidden'); // 그 외 -> 보임
+            }
+        });
+    }
+
     displayResult() {
         const typeData = personalityTypes[this.resultType];
         
@@ -169,6 +230,9 @@ class ResultManager {
             const item = this.createProgramItem(program);
             alternativeProgramList.appendChild(item);
         });
+        
+        // [추가] 초기 필터링 적용 (기본값대로)
+        this.filterPrograms();
     }
     
     setupEventListeners() {
@@ -189,7 +253,14 @@ class ResultManager {
             window.location.href = 'index.html';
         });
 
-        
+        // [추가] 토글 스위치 이벤트 리스너
+        const toggleSwitch = document.getElementById('recruitToggle');
+        if (toggleSwitch) {
+            toggleSwitch.addEventListener('change', (e) => {
+                this.showOnlyRecruiting = e.target.checked;
+                this.filterPrograms(); // 상태 변경 시 필터링 다시 수행
+            });
+        }
     }
     
     shareResult() {
