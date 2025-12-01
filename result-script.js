@@ -219,30 +219,35 @@ class ResultManager {
         }
     }
     
-    // [유령 복제 기법 유지]
+    // [최종 수정] 이미지 클립보드 복사 기능 ("유령 복제" 기법 유지)
     async saveAsImage() {
         if (window.location.protocol === 'file:') {
-            alert('🚨 중요: "file://" 경로로 실행 중입니다. 이미지 누락 가능성이 있습니다.\nVS Code의 [Live Server]를 이용해주세요.');
+            alert('🚨 중요: "file://" 경로로 실행 중입니다. 클립보드 복사가 차단될 수 있습니다.\nVS Code의 [Live Server]를 이용해주세요.');
         }
 
         const loading = document.getElementById('screenshotLoading');
         const container = document.querySelector('.container');
         
+        // 로딩 표시
         loading.style.display = 'flex';
 
         try {
+            // 1. 화면 밖에서 조작할 '쌍둥이(Clone)' 생성
             const clone = container.cloneNode(true);
             clone.id = 'capture-target-clone'; 
             
+            // 2. 쌍둥이를 화면 밖(-10000px)으로 이동
             clone.style.position = 'fixed';
             clone.style.left = '-10000px';
             clone.style.top = '0';
             clone.style.zIndex = '-9999';
             
+            // 3. 쌍둥이 스타일 설정 (디자인 유지 최적화)
             clone.style.width = container.offsetWidth + 'px'; 
             clone.style.height = 'auto'; 
             clone.style.overflow = 'visible'; 
             
+            // [애니메이션 강제 정지]
             const style = document.createElement('style');
             style.innerHTML = `
                 #capture-target-clone, #capture-target-clone * {
@@ -253,6 +258,7 @@ class ResultManager {
             `;
             document.head.appendChild(style);
 
+            // [내부 컨텐츠 Flex 해제]
             const cloneContent = clone.querySelector('.result-content');
             if (cloneContent) {
                 cloneContent.style.height = 'auto';
@@ -262,6 +268,7 @@ class ResultManager {
                 cloneContent.style.paddingBottom = '2rem'; 
             }
 
+            // 4. 불필요한 요소 제거 (요약 카드만 남기기)
             const classesToRemove = [
                 '.header',              
                 '.programs-section',    
@@ -277,32 +284,50 @@ class ResultManager {
                 elements.forEach(el => el.remove());
             });
 
+            // 5. 쌍둥이를 잠시 문서에 붙임
             document.body.appendChild(clone);
 
+            // 6. 이미지 렌더링 안정화 대기
             await new Promise(resolve => setTimeout(resolve, 1000));
 
+            // 7. 찰칵!
             const canvas = await html2canvas(clone, {
                 scale: 2, 
                 useCORS: true,
                 logging: false,
-                backgroundColor: null, 
+                backgroundColor: null, // 투명 배경 유지
                 windowWidth: clone.scrollWidth,
                 windowHeight: clone.scrollHeight
             });
 
-            const link = document.createElement('a');
-            const date = new Date();
-            const dateStr = `${date.getFullYear()}${String(date.getMonth()+1).padStart(2,'0')}${String(date.getDate()).padStart(2,'0')}`;
-            link.download = `CampusMatch_Card_${this.resultType}_${dateStr}.png`;
-            link.href = canvas.toDataURL('image/png');
-            link.click();
+            // 8. [변경됨] 클립보드에 복사하기
+            canvas.toBlob(async (blob) => {
+                try {
+                    if (!blob) throw new Error('이미지 변환 실패');
+                    
+                    // Clipboard API 사용
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([item]);
+                    
+                    alert('이미지가 클립보드에 복사되었습니다!\n(Ctrl+V로 붙여넣기 하세요)');
+                } catch (err) {
+                    console.error('클립보드 복사 실패:', err);
+                    // 실패 시 다운로드로 대체 (안전장치)
+                    const link = document.createElement('a');
+                    link.download = `CampusMatch_Result.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    alert('클립보드 복사에 실패하여 이미지 파일로 다운로드합니다.');
+                }
+            }, 'image/png');
 
+            // 9. 증거 인멸
             document.head.removeChild(style);
             document.body.removeChild(clone);
 
         } catch (err) {
-            console.error('캡처 실패:', err);
-            alert('이미지 저장 실패: ' + err.message);
+            console.error('캡처 프로세스 실패:', err);
+            alert('작업 중 오류가 발생했습니다: ' + err.message);
         } finally {
             loading.style.display = 'none';
         }
