@@ -285,11 +285,19 @@ body {
     box-shadow: var(--shadow-md);
     border: 2px solid var(--border-color);
     transition: all 0.3s ease;
+    
+    /* [수정 1] 카드 자체의 쌓임 순서 설정 */
+    position: relative; /* z-index가 작동하도록 기준점 설정 */
+    z-index: 1; /* 기본 상태에서는 1 */
 }
 
 .program-card:hover {
     transform: translateY(-2px);
     box-shadow: var(--shadow-lg);
+    
+    /* [수정 1] 마우스 올리면 카드 전체를 화면 앞으로(50) 가져와서 
+       아래쪽 '대안 프로그램' 카드에 팝업이 가려지지 않게 함 */
+    z-index: 50; 
 }
 
 .base-program {
@@ -356,8 +364,17 @@ body {
     justify-content: space-between;
     padding: clamp(0.5rem, 1.5vw, 0.7rem) 0;
     border-bottom: 1px solid var(--border-color);
-    position: relative;
+    
+    /* 자식(팝업)의 위치 기준점 */
+    position: relative; 
 }
+
+/* [수정 2] 마우스 올린 리스트 항목만 z-index를 높임(100) 
+   형제 리스트들의 글자에 팝업이 가려지지 않게 함 */
+.program-item:hover {
+    z-index: 100;
+}
+
 
 /* 프로그램 호버 이미지 프리뷰 */
 .program-preview {
@@ -374,7 +391,9 @@ body {
     pointer-events: none;
     transform: translateY(4px);
     transition: opacity 0.2s ease, transform 0.2s ease;
-    z-index: 20;
+    
+    /* [수정 3] 팝업창을 무조건 최상단(9999)에 위치시킴 */
+    z-index: 9999;
 }
 
 .program-preview img {
