@@ -81,5 +81,5 @@ _어떤 환경에서 활동하는 것을 선호하는가?_
 
 1. **리포지토리 클론**
    ```bash
-   git clone https://github.com/kdHyeok/Team4_CampusMatch.git
+   git clone https://github.com/WebPJT4/Team4_CampusMatch.git
    cd Team4_CampusMatch
