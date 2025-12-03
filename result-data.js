@@ -160,13 +160,23 @@ const personalityTypes = {
               image: "images/programs/pds_bp2.jpg", deadline: "2025-11-13" },
             { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
               image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },
+            { title: "신입생-현직자 진로 멘토링 특강 추가 참여자 모집", link: "https://buly.kr/3YEaKz5",
+              image: "images/programs/pds_bp4.jpg", deadline: "2025-12-03" },
+            { title: "제13기 i-Caps(글로벌 캡스톤 디자인 프로젝트) 참가팀 모집 안내", link: "https://buly.kr/C0AxQNk",
+              image: "images/programs/pds_bp5.jpg", deadline: "2025-12-12" },
+                
+              
             
         ],
         alternativePrograms: [
-            { title: '정기 학년별 학과 세미나', link: '', deadline: "2026-01-30" },
-            { title: '안정적 튜터링 참여', link: '', deadline: "2026-01-30" },
-            { title: '교수 프로그램 꾸준히 이수', link: '', deadline: "2026-01-30" },
-            { title: '후기 제출 프로그램', link: '', deadline: "2026-01-30" }
+            { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },  
+            { title: "내향인을 위한 취향메이트 찾기 프로그램", link: "https://buly.kr/BIVvUxA",
+              image: "images/programs/pws_bp3.jpg", deadline: "2025-12-06" },    
+            { title: "마음 산책: 스트레스에 대처하는 방법 프로그램", link: "https://buly.kr/AlleYNh", 
+              image: "images/programs/pwi_bp3.jpg", deadline: "2025-12-04" },
+            { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },  
         ]
     },
     'PDI': {
@@ -181,14 +191,26 @@ const personalityTypes = {
               image: "images/programs/pdi_bp1.webp", deadline: "2025-07-2" },
             { title: "2025학년도 2학기 자기설계전공 교육과정 설계 공모전", link: "https://url.kr/h2r7kc",
               image: "images/programs/pdi_bp2.jpg", deadline: "2025-11-30" },  
+            { title: "2025 농림축산식품 과학기술대전 개최 알림 및 참여 협조 요청", link: "https://buly.kr/BpGCREm",
+              image: "images/programs/pdi_bp3.jpg", deadline: "2025-12-11" },  
+            { title: "신입생-현직자 진로 멘토링 특강 추가 참여자 모집", link: "https://buly.kr/3YEaKz5",
+              image: "images/programs/pdi_bp4.jpg", deadline: "2025-12-11" },   
+            { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },    
+              
+
               
            
         ],
         alternativePrograms: [
-            { title: '기초·중급 주제 수강', link: '', deadline: "2026-01-30" },
-            { title: '논문 작성 첫걸음 강의', link: '', deadline: "2026-01-30" },
-            { title: '학사 멘토링 추천', link: '', deadline: "2026-01-30" },
-            { title: '큐레이션된 강의', link: '', deadline: "2026-01-30" }
+           { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
+              image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },
+           { title: "이음합창단 단원모집", link: "https://url.kr/j7e5sq",
+              image: "images/programs/pws_bp2.jpg", deadline: "2025-01-30" },  
+           { title: " 프랑스·아프리카연구소 성과확산 사진전", link: "https://buly.kr/8TrnnhO", 
+              image: "images/programs/pwi_bp2.jpg", deadline: "2025-12-10" },    
+           { title: "임주아 시인 강연 안내", link: "https://buly.kr/ChpzLsx", 
+              image: "images/programs/pwi_bp5.jpg", deadline: "2025-12-04" },   
         ]
     },
     'PWS': {
@@ -202,14 +224,26 @@ const personalityTypes = {
             { title: "2026학년도 중화권 파견 교환학생 선발 안내", link: "https://url.kr/jlcb3h",
               image: "images/programs/pws_bp1.jpg", deadline: "2025-11-07" },
             { title: "이음합창단 단원모집", link: "https://url.kr/j7e5sq",
-              image: "images/programs/pws_bp1.jpg", deadline: "2026-01-30" },
+              image: "images/programs/pws_bp2.jpg", deadline: "2025-01-30" },
+            { title: "내향인을 위한 취향메이트 찾기 프로그램", link: "https://buly.kr/BIVvUxA",
+              image: "images/programs/pws_bp3.jpg", deadline: "2025-12-06" },  
+            { title: "혁신 FS 풋살 신규 회원모집 합니다", link: "https://buly.kr/HSYRpZ9",
+              image: "images/programs/pws_bp4.jpg", deadline: "2025-12-30" },  
+            { title: "고창갯벌X힐링 아트 프로그램 _갯벌 읽고 감각하기", link: "https://buly.kr/5fDg76j",
+              image: "images/programs/pws_bp5.jpg", deadline: "2025-12-12" },  
         
         ],
         alternativePrograms: [
-            { title: '상담센터 집단상담', link: '', deadline: "2026-01-30" },
-            { title: '저강도 봉사 활동', link: '', deadline: "2026-01-30" },
-            { title: '후기 캡처형 비교과', link: '', deadline: "2026-01-30" },
-            { title: '마음챙김 캠페인', link: '', deadline: "2026-01-30" }
+             { title: "버추얼프로덕션 선진지 견학 프로그램 참가자 모집 ", link: "https://url.kr/ysjnq6",
+              image: "images/programs/pds_bp2.jpg", deadline: "2025-11-13" },
+             { title: "2025 농림축산식품 과학기술대전 개최 알림 및 참여 협조 요청", link: "https://buly.kr/BpGCREm",
+              image: "images/programs/pdi_bp3.jpg", deadline: "2025-12-11" }, 
+             { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },   
+             { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },   
+                 
+            
         ]
     },
     'PWI': {
@@ -222,13 +256,25 @@ const personalityTypes = {
        basePrograms: [
             { title: " 2025학년도 도서관 독서주간 '책과 환상의 나라 JJ랜드", link: "https://url.kr/4imn6a", 
               image: "images/programs/pwi_bp1.jpg", deadline: "2025-11-21" },
+            { title: " 프랑스·아프리카연구소 성과확산 사진전", link: "https://buly.kr/8TrnnhO", 
+              image: "images/programs/pwi_bp2.jpg", deadline: "2025-12-10" },
+            { title: "마음 산책: 스트레스에 대처하는 방법 프로그램", link: "https://buly.kr/AlleYNh", 
+              image: "images/programs/pwi_bp3.jpg", deadline: "2025-12-04" },
+            { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },
+            { title: "임주아 시인 강연 안내", link: "https://buly.kr/ChpzLsx", 
+              image: "images/programs/pwi_bp5.jpg", deadline: "2025-12-04" },  
             
         ],
         alternativePrograms: [
-            { title: '기초 체력 관리 코스', link: '', deadline: "2026-01-30" },
-            { title: '초급 취미·독서 프로그램', link: '', deadline: "2026-01-30" },
-            { title: '멘토링·상담사 연계', link: '', deadline: "2026-01-30" },
-            { title: '1:1 자기관리 상담', link: '', deadline: "2026-01-30" }
+            { title: "고창갯벌X힐링 아트 프로그램 _갯벌 읽고 감각하기", link: "https://buly.kr/5fDg76j",
+              image: "images/programs/pws_bp5.jpg", deadline: "2025-12-12" }, 
+            { title: "[카운슬링센터] 나를 이기는 습관! 참여자 모집", link: "https://url.kr/63lj1s",
+              image: "images/programs/pdi_bp1.webp", deadline: "2025-07-2" }, 
+            { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
+              image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },  
+            { title: "신입생-현직자 진로 멘토링 특강 추가 참여자 모집", link: "https://buly.kr/3YEaKz5",
+              image: "images/programs/pds_bp4.jpg", deadline: "2025-12-03" },  
         ]
     }
 };
