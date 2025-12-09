@@ -154,17 +154,29 @@ const personalityTypes = {
         strengths: ['강한 지적 호기심', '뛰어난 협업 시너지', '높은 적응력', '공감 능력'],
         weaknesses: ['취업 준비 소홀할 수 있음', '타인 의존 경향', '현실 감각 부족'],
        basePrograms: [
-            { title: "온스타 멘토링 – 전공 멘토/튜티", link: "https://onstar.jj.ac.kr/program/9092", deadline: "2026-01-30" },
-            { title: "전공 학회 세미나 및 스터디 그룹", link: "https://onstar.jj.ac.kr/program/9361", deadline: "2026-01-30" },
-            { title: "교수-학생 연구 참여 프로그램", link: "https://onstar.jj.ac.kr/program/9263", deadline: "2026-01-30" },
-            { title: "학습법 특강 – 효과적인 학습전략", link: "https://onstar.jj.ac.kr/program/9529", deadline: "2026-01-30" },
-            { title: "성적 향상 튜터링(협업 중심)", link: "https://onstar.jj.ac.kr/program/9486", deadline: "2026-01-30" }
+            { title: "제 25회 전북독립영화제 버추얼프로덕션 기술세미나 안내 ", link: "https://url.kr/jr81fq",
+              image: "images/programs/pds_bp1.jpg", deadline: "2025-11-01" },
+            { title: "버추얼프로덕션 선진지 견학 프로그램 참가자 모집 ", link: "https://url.kr/ysjnq6",
+              image: "images/programs/pds_bp2.jpg", deadline: "2025-11-13" },
+            { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
+              image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },
+            { title: "[위메이저] 전공강연단체 위메이저 26_겨울 기수", link: "https://www.ssgsag.kr/posters/25069",
+              image: "images/programs/pds_bp4.jpg", deadline: "2025-12-25" },
+            { title: "언더스탠드에비뉴 《ESG 크리에이터 소셜링커 5기》", link: "https://www.ssgsag.kr/posters/25064",
+              image: "images/programs/pds_bp5.jpg", deadline: "2025-12-31" },
+                
+              
+            
         ],
         alternativePrograms: [
-            { title: '정기 학년별 학과 세미나', link: '', deadline: "2026-01-30" },
-            { title: '안정적 튜터링 참여', link: '', deadline: "2026-01-30" },
-            { title: '교수 프로그램 꾸준히 이수', link: '', deadline: "2026-01-30" },
-            { title: '후기 제출 프로그램', link: '', deadline: "2026-01-30" }
+            { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },  
+            { title: "내향인을 위한 취향메이트 찾기 프로그램", link: "https://buly.kr/BIVvUxA",
+              image: "images/programs/pws_bp3.jpg", deadline: "2025-12-06" },    
+            { title: "마음 산책: 스트레스에 대처하는 방법 프로그램", link: "https://buly.kr/AlleYNh", 
+              image: "images/programs/pwi_bp3.jpg", deadline: "2025-12-04" },
+            { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },  
         ]
     },
     'PDI': {
@@ -175,17 +187,30 @@ const personalityTypes = {
         strengths: ['깊은 지적 탐구심', '뛰어난 몰입력', '독립적 성장', '전문 지식'],
         weaknesses: ['사회성 부족', '정보 교류 취약', '현실 감각 약함'],
         basePrograms: [
-            { title: "MOOC·K-MOOC 전공 심화 학습", link: "https://onstar.jj.ac.kr/program/9315", deadline: "2026-01-30" },
-            { title: "논문·리포트 작성 심화 특강", link: "https://onstar.jj.ac.kr/program/9101", deadline: "2026-01-30" },
-            { title: "도서관 학술 DB 활용 교육", link: "https://onstar.jj.ac.kr/program/9554", deadline: "2026-01-30" },
-            { title: "전공 교수 연구세미나(소규모)", link: "https://onstar.jj.ac.kr/program/9361", deadline: "2026-01-30" },
-            { title: "편입·복학생 학습적응 세미나", link: "https://onstar.jj.ac.kr/program/9517", deadline: "2026-01-30" }
+            { title: "[카운슬링센터] 나를 이기는 습관! 참여자 모집", link: "https://url.kr/63lj1s",
+              image: "images/programs/pdi_bp1.webp", deadline: "2025-07-2" },
+            { title: "2025학년도 2학기 자기설계전공 교육과정 설계 공모전", link: "https://url.kr/h2r7kc",
+              image: "images/programs/pdi_bp2.jpg", deadline: "2025-11-30" },  
+            { title: "2025 농림축산식품 과학기술대전 개최 알림 및 참여 협조 요청", link: "https://buly.kr/BpGCREm",
+              image: "images/programs/pdi_bp3.jpg", deadline: "2025-12-11" },  
+            { title: "AI SEOUL 2026", link: "https://www.aiseoul2026.com/home/p1.php?s=31",
+              image: "images/programs/pdi_bp4.jpg", deadline: "2026-01-30" },  ,   
+            { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },    
+              
+
+              
+           
         ],
         alternativePrograms: [
-            { title: '기초·중급 주제 수강', link: '', deadline: "2026-01-30" },
-            { title: '논문 작성 첫걸음 강의', link: '', deadline: "2026-01-30" },
-            { title: '학사 멘토링 추천', link: '', deadline: "2026-01-30" },
-            { title: '큐레이션된 강의', link: '', deadline: "2026-01-30" }
+           { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
+              image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },
+           { title: "이조용한 손맛 클럽", link: "https://linkareer.com/activity/286970",
+              image: "images/programs/pws_bp2.jpg", deadline: "2025-12-31" }, 
+           { title: " 프랑스·아프리카연구소 성과확산 사진전", link: "https://buly.kr/8TrnnhO", 
+              image: "images/programs/pwi_bp2.jpg", deadline: "2025-12-10" },    
+           { title: "임주아 시인 강연 안내", link: "https://buly.kr/ChpzLsx", 
+              image: "images/programs/pwi_bp5.jpg", deadline: "2025-12-04" },   
         ]
     },
     'PWS': {
@@ -196,17 +221,29 @@ const personalityTypes = {
         strengths: ['뛰어난 친화력', '넘치는 에너지', '높은 공감 능력', '빠른 적응력'],
         weaknesses: ['한 분야 깊이 부족', '감정 소모 큼', '성과 압박에 취약'],
        basePrograms: [
-            { title: "해외 봉사·국제 문화 교류 프로그램", link: "https://onstar.jj.ac.kr/program/9448", deadline: "2026-01-30" },
-            { title: "온스타 힐링캠프(힐링·관계중심)", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" },
-            { title: "문화·예술·봉사 동아리 지원", link: "https://onstar.jj.ac.kr/program/9581", deadline: "2026-01-30" },
-            { title: "상담센터 집단 상담 프로그램", link: "https://onstar.jj.ac.kr/program/9098", deadline: "2026-01-30" },
-            { title: "소그룹 탐방/프로젝트 활동", link: "https://onstar.jj.ac.kr/program/9483", deadline: "2026-01-30" }
+            { title: "2026학년도 중화권 파견 교환학생 선발 안내", link: "https://url.kr/jlcb3h",
+              image: "images/programs/pws_bp1.jpg", deadline: "2025-11-07" },
+            { title: "이조용한 손맛 클럽", link: "https://linkareer.com/activity/286970",
+              image: "images/programs/pws_bp2.jpg", deadline: "2025-12-31" },
+            { title: "내향인을 위한 취향메이트 찾기 프로그램", link: "https://buly.kr/BIVvUxA",
+              image: "images/programs/pws_bp3.jpg", deadline: "2025-12-06" },  
+            { title: "보컬 실력과 마음이 함께 성장하는 곳 보컬 크루 ‘이음’", link: "https://linkareer.com/activity/286958",
+              image: "images/programs/pws_bp4.jpg", deadline: "2026-01-31" },  
+            { title: "고창갯벌X힐링 아트 프로그램 _갯벌 읽고 감각하기", link: "https://buly.kr/5fDg76j",
+              image: "images/programs/pws_bp5.jpg", deadline: "2025-12-12" },  
+        
         ],
         alternativePrograms: [
-            { title: '상담센터 집단상담', link: '', deadline: "2026-01-30" },
-            { title: '저강도 봉사 활동', link: '', deadline: "2026-01-30" },
-            { title: '후기 캡처형 비교과', link: '', deadline: "2026-01-30" },
-            { title: '마음챙김 캠페인', link: '', deadline: "2026-01-30" }
+             { title: "버추얼프로덕션 선진지 견학 프로그램 참가자 모집 ", link: "https://url.kr/ysjnq6",
+              image: "images/programs/pds_bp2.jpg", deadline: "2025-11-13" },
+             { title: "2025 농림축산식품 과학기술대전 개최 알림 및 참여 협조 요청", link: "https://buly.kr/BpGCREm",
+              image: "images/programs/pdi_bp3.jpg", deadline: "2025-12-11" }, 
+             { title: "왕은철 명예교수 특강 안내", link: "https://buly.kr/AF1NcYK",
+              image: "images/programs/pdi_bp5.jpg", deadline: "2025-12-02" },   
+             { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },   
+                 
+            
         ]
     },
     'PWI': {
@@ -217,17 +254,27 @@ const personalityTypes = {
         strengths: ['뚜렷한 주관', '높은 창의성', '깊은 자기성찰', '정서적 안정'],
         weaknesses: ['경쟁력 부족', '네트워킹 취약', '현실 감각 부족', '조직 적응력 낮음'],
        basePrograms: [
-            { title: "명상·스트레스 관리 프로그램", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" },
-            { title: "헬스장·수영장 교내 웰빙 패스", link: "https://onstar.jj.ac.kr/program/9221", deadline: "2026-01-30" },
-            { title: "인문학·예술·철학 교양 특강", link: "https://onstar.jj.ac.kr/program/9554", deadline: "2026-01-30" },
-            { title: "온라인 취미 클래스 지원", link: "https://onstar.jj.ac.kr/program/9479", deadline: "2026-01-30" },
-            { title: "마음챙김 힐링 챌린지", link: "https://onstar.jj.ac.kr/program/9633", deadline: "2026-01-30" }
+            { title: " 2025학년도 도서관 독서주간 '책과 환상의 나라 JJ랜드", link: "https://url.kr/4imn6a", 
+              image: "images/programs/pwi_bp1.jpg", deadline: "2025-11-21" },
+            { title: " 프랑스·아프리카연구소 성과확산 사진전", link: "https://buly.kr/8TrnnhO", 
+              image: "images/programs/pwi_bp2.jpg", deadline: "2025-12-10" },
+            { title: "현실공포 단편소설 공모전 제 2회", link: "https://linkareer.com/activity/275150", 
+              image: "images/programs/pwi_bp3.jpg", deadline: "2026-01-17" },
+            { title: "'색(色)다른 책 - Color Book Curation' 12월 전시 안내", link: "https://buly.kr/B7bAWQc", 
+              image: "images/programs/pwi_bp4.jpg", deadline: "2025-12-04" },
+            { title: "임주아 시인 강연 안내", link: "https://buly.kr/ChpzLsx", 
+              image: "images/programs/pwi_bp5.jpg", deadline: "2025-12-04" },  
+            
         ],
         alternativePrograms: [
-            { title: '기초 체력 관리 코스', link: '', deadline: "2026-01-30" },
-            { title: '초급 취미·독서 프로그램', link: '', deadline: "2026-01-30" },
-            { title: '멘토링·상담사 연계', link: '', deadline: "2026-01-30" },
-            { title: '1:1 자기관리 상담', link: '', deadline: "2026-01-30" }
+            { title: "고창갯벌X힐링 아트 프로그램 _갯벌 읽고 감각하기", link: "https://buly.kr/5fDg76j",
+              image: "images/programs/pws_bp5.jpg", deadline: "2025-12-12" }, 
+            { title: "[카운슬링센터] 나를 이기는 습관! 참여자 모집", link: "https://url.kr/63lj1s",
+              image: "images/programs/pdi_bp1.webp", deadline: "2025-07-2" }, 
+            { title: "전북 로컬 기반 숏폼 영상 챌린지 전북 크리에이터 챌린잼", link: "https://url.kr/fiqauf",
+              image: "images/programs/pds_bp3.jpg", deadline: "2025-11-20" },  
+            { title: "AI SEOUL 2026", link: "https://www.aiseoul2026.com/home/p1.php?s=31",
+              image: "images/programs/pdi_bp4.jpg", deadline: "2026-01-30" },  
         ]
     }
 };

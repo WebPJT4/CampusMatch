@@ -199,25 +199,27 @@ class ResultManager {
     }
     
     setupEventListeners() {
-        document.getElementById('viewPrograms').addEventListener('click', () => {
-            window.open('https://onstar.jj.ac.kr/', '_blank');
-        });
-        
-        document.getElementById('retakeTest').addEventListener('click', () => {
-            sessionStorage.clear();
-            window.location.href = 'index.html';
-        });
-        document.getElementById('shareResult').addEventListener('click', () => this.saveAsImage());
-        document.getElementById('backButton').addEventListener('click', () => window.location.href = 'index.html');
 
-        const toggleSwitch = document.getElementById('recruitToggle');
-        if (toggleSwitch) {
-            toggleSwitch.addEventListener('change', (e) => {
-                this.showOnlyRecruiting = e.target.checked;
-                this.filterPrograms();
-            });
-        }
+    document.getElementById('retakeTest').addEventListener('click', () => {
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+    });
+
+    document.getElementById('shareResult').addEventListener('click', () => this.saveAsImage());
+
+    document.getElementById('backButton').addEventListener('click', () => 
+        window.location.href = 'index.html'
+    );
+
+    const toggleSwitch = document.getElementById('recruitToggle');
+    if (toggleSwitch) {
+        toggleSwitch.addEventListener('change', (e) => {
+            this.showOnlyRecruiting = e.target.checked;
+            this.filterPrograms();
+        });
     }
+}
+
     
     // [최종 수정] 이미지 클립보드 복사 기능 ("유령 복제" 기법 유지)
     async saveAsImage() {
