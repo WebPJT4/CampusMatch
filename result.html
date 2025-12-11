@@ -71,24 +71,36 @@
 
             <!-- 추천 프로그램 섹션 -->
             <div class="programs-section">
-                <div class="section-header">
-                    <h2>📚 추천 프로그램</h2>
-                    <p class="section-subtitle">당신의 성향에 꼭 맞는 활동을 찾아보세요!</p>
+                <div class="section-header program-header-wrapper">
+                    <div>
+                        <h2>📚 추천 프로그램</h2>
+                        <p class="section-subtitle">당신의 성향에 꼭 맞는 활동을 찾아보세요!</p>
+                    </div>
+                    <!-- 모집 중만 보기 토글 스위치 -->
+                    <div class="toggle-wrapper">
+                        <label class="switch">
+                            <input type="checkbox" id="recruitToggle">
+                            <span class="slider round"></span>
+                        </label>
+                        <span class="toggle-label">모집 중만 보기</span>
+                    </div>
                 </div>
 
                 <!-- 기본 추천 -->
                 <div class="program-card base-program">
                     <div class="program-header">
-                        <h3>🎯 이런 활동이 딱이에요!</h3>
+                        <h3>이런 활동이 딱이에요!</h3>
+                        
                         <span class="program-badge">Best Fit</span>
                     </div>
+                    <p class="program-desc">성향과 잘 맞는 추천 활동들이에요!</p>
                     <ul class="program-list" id="baseProgramList"></ul>
                 </div>
 
                 <!-- 대안 추천 -->
                 <div class="program-card alternative-program">
                     <div class="program-header">
-                        <h3>💡 아니면 이런 건 어때요?</h3>
+                        <h3>아니면 이런 건 어때요?</h3>
                         <span class="program-badge alternative">Alternative</span>
                     </div>
                     <p class="program-desc">부담 없이 시작할 수 있는 편안한 활동들이에요!</p>
@@ -96,14 +108,8 @@
                 </div>
             </div>
 
-            <!-- 액션 버튼 -->
+                        <!-- 액션 버튼 -->
             <div class="action-section">
-                <button class="btn-primary" id="viewPrograms">
-                    <span>프로그램 자세히 보기</span>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                        <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                    </svg>
-                </button>
                 <div class="secondary-buttons">
                     <button class="btn-secondary" id="retakeTest">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
@@ -111,6 +117,7 @@
                         </svg>
                         <span>다시하기</span>
                     </button>
+            
                     <button class="btn-secondary" id="shareResult">
                         <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
                             <path d="M4 16L4 17C4 18.6569 5.34315 20 7 20L17 20C18.6569 20 20 18.6569 20 17L20 16M16 8L12 4M12 4L8 8M12 4L12 16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -119,8 +126,7 @@
                     </button>
                 </div>
             </div>
-        </main>
-    </div>
+             
     
     <!-- 로딩 오버레이 -->
     <div class="screenshot-loading" id="screenshotLoading" style="display: none;">

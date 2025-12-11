@@ -3,6 +3,7 @@ class ResultManager {
         this.userName = '';
         this.resultType = '';
         this.answers = [];
+        this.showOnlyRecruiting = false; 
         this.init();
     }
     
@@ -14,14 +15,11 @@ class ResultManager {
         this.userName = sessionStorage.getItem('userName') || '사용자';
         this.answers = this.decodeAnswers(encodedAnswers);
         
-        // 유형별 이미지 프리로드
         this.preloadCharacterImage();
-        
         this.displayResult();
         this.setupEventListeners();
     }
     
-    // 캐릭터 이미지 프리로드
     preloadCharacterImage() {
         const typeData = personalityTypes[this.resultType];
         if (typeData && typeData.characterImage) {
@@ -35,23 +33,15 @@ class ResultManager {
         try {
             let binaryStr = parseInt(encoded, 36).toString(2);
             binaryStr = binaryStr.padStart(15, '0');
-            
             const types = ['S/I', 'O/P', 'D/W', 'S/I', 'D/W', 'S/I', 'O/P', 'S/I', 'D/W', 'O/P', 'O/P', 'D/W', 'S/I', 'O/P', 'D/W'];
             const answers = [];
-            
             for (let i = 0; i < 15; i++) {
                 const bit = binaryStr[i];
                 const type = types[i];
-                
-                if (type === 'S/I') {
-                    answers.push(bit === '0' ? 'S' : 'I');
-                } else if (type === 'D/W') {
-                    answers.push(bit === '0' ? 'D' : 'W');
-                } else if (type === 'O/P') {
-                    answers.push(bit === '0' ? 'O' : 'P');
-                }
+                if (type === 'S/I') answers.push(bit === '0' ? 'S' : 'I');
+                else if (type === 'D/W') answers.push(bit === '0' ? 'D' : 'W');
+                else if (type === 'O/P') answers.push(bit === '0' ? 'O' : 'P');
             }
-            
             return answers;
         } catch (e) {
             console.error('Decode error:', e);
@@ -59,43 +49,111 @@ class ResultManager {
         }
     }
 
-    // 프로그램 리스트 아이템 생성 (텍스트 + 화살표 버튼)
+    checkIsClosed(deadlineStr) {
+        if (!deadlineStr) return false;
+        const today = new Date();
+        today.setHours(0, 0, 0, 0); // 시간 무시하고 날짜만 비교
+        const deadline = new Date(deadlineStr);
+        if (isNaN(deadline.getTime())) return false;
+        return today > deadline;
+    }
+
+    // [추가] D-Day 계산 함수
+    calculateDDay(deadlineStr) {
+        if (!deadlineStr) return null;
+        
+        const today = new Date();
+        today.setHours(0, 0, 0, 0);
+        
+        const deadline = new Date(deadlineStr);
+        deadline.setHours(0, 0, 0, 0);
+
+        if (isNaN(deadline.getTime())) return null;
+
+        // 시간 차이를 일(Day) 단위로 변환
+        const diffTime = deadline - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        if (diffDays < 0) return null; // 이미 지남
+        if (diffDays === 0) return 'D-Day';
+        return `D-${diffDays}`;
+    }
+
     createProgramItem(program) {
-        // program 이 문자열이면 텍스트만, 객체면 {title, link} 형식으로 사용 (link는 안 씀)
-        const text = typeof program === 'string'
-            ? program
-            : (program.title || program.name || '');
+        const programObj = typeof program === 'string' ? { title: program, link: '', image: null, deadline: null } : program;
+        const text = programObj.title || programObj.name || '';
+        const image = programObj.image || null;
+        const deadline = programObj.deadline || null;
+        
+        const isClosed = this.checkIsClosed(deadline);
+        // [추가] D-Day 텍스트 계산
+        const dDayText = !isClosed ? this.calculateDDay(deadline) : null;
 
         const li = document.createElement('li');
         li.classList.add('program-item');
+        if (isClosed) {
+            li.classList.add('closed');
+            li.dataset.status = 'closed';
+        } else {
+            li.dataset.status = 'active';
+        }
 
+        const badgeSpan = document.createElement('span');
+        badgeSpan.className = `status-badge ${isClosed ? 'closed' : 'active'}`;
+        badgeSpan.textContent = isClosed ? '마감' : '모집중';
+        
+        // 텍스트 컨테이너
         const textSpan = document.createElement('span');
         textSpan.className = 'program-text';
         textSpan.textContent = text;
-        li.appendChild(textSpan);
 
-        // 화살표 버튼 (항상 생성)
-        const button = document.createElement('button');
-        button.className = 'program-arrow';
-        // 검색용으로 제목 저장
-        button.dataset.programTitle = text;
+        // [추가] D-Day 태그 생성 및 부착 (모집 중이고 날짜가 있을 때만)
+        if (dDayText) {
+            const dDaySpan = document.createElement('span');
+            dDaySpan.className = 'd-day-tag'; // CSS 클래스 추가
+            dDaySpan.textContent = dDayText;
+            textSpan.appendChild(dDaySpan); // 제목 옆에 붙임
+        }
+        
+        const contentWrapper = document.createElement('div');
+        contentWrapper.style.display = 'flex';
+        contentWrapper.style.alignItems = 'center';
+        contentWrapper.style.flex = '1';
+        
+        contentWrapper.appendChild(badgeSpan);
+        contentWrapper.appendChild(textSpan);
+        li.appendChild(contentWrapper);
 
-        button.innerHTML = `
-            <svg viewBox="0 0 24 24" fill="none">
-                <path d="M5 12H19M19 12L12 5M19 12L12 19"
-                    stroke="currentColor"
-                    stroke-width="2"
-                    stroke-linecap="round"/>
-            </svg>
-        `;
+        if (image) {
+            const preview = document.createElement('div');
+            preview.className = 'program-preview';
+            const img = document.createElement('img');
+            img.src = image;
+            img.alt = text;
+            preview.appendChild(img);
+            li.appendChild(preview);
+        }
 
-        li.appendChild(button);
+        if (programObj.link) {
+            li.addEventListener('click', () => window.open(programObj.link, '_blank'));
+        }
+        
         return li;
     }
     
+    filterPrograms() {
+        const items = document.querySelectorAll('.program-item');
+        items.forEach(item => {
+            if (this.showOnlyRecruiting && item.dataset.status === 'closed') {
+                item.classList.add('hidden');
+            } else {
+                item.classList.remove('hidden');
+            }
+        });
+    }
+
     displayResult() {
         const typeData = personalityTypes[this.resultType];
-        
         document.getElementById('userNameDisplay').textContent = this.userName;
         document.getElementById('typeTitle').textContent = typeData.title;
         document.getElementById('typeBadge').textContent = typeData.nickname;
@@ -103,15 +161,10 @@ class ResultManager {
         const characterImg = document.getElementById('resultCharacter');
         characterImg.src = typeData.characterImage;
         characterImg.alt = typeData.nickname;
-        
-        characterImg.onerror = () => {
-            console.warn(`캐릭터 이미지 로드 실패: ${typeData.characterImage}`);
-            characterImg.src = 'images/characters/default-character.png';
-        };
+        characterImg.onerror = () => { characterImg.src = 'images/characters/default-character.png'; };
         
         document.getElementById('descriptionText').textContent = typeData.description;
         
-        // 강점
         const strengthsList = document.getElementById('strengthsList');
         strengthsList.innerHTML = '';
         typeData.strengths.forEach(strength => {
@@ -120,7 +173,6 @@ class ResultManager {
             strengthsList.appendChild(li);
         });
         
-        // 약점
         const weaknessesList = document.getElementById('weaknessesList');
         weaknessesList.innerHTML = '';
         typeData.weaknesses.forEach(weakness => {
@@ -129,7 +181,6 @@ class ResultManager {
             weaknessesList.appendChild(li);
         });
         
-        // 기본 프로그램
         const baseProgramList = document.getElementById('baseProgramList');
         baseProgramList.innerHTML = '';
         typeData.basePrograms.forEach(program => {
@@ -137,82 +188,150 @@ class ResultManager {
             baseProgramList.appendChild(item);
         });
         
-        // 대안 프로그램
         const alternativeProgramList = document.getElementById('alternativeProgramList');
         alternativeProgramList.innerHTML = '';
         typeData.alternativePrograms.forEach(program => {
             const item = this.createProgramItem(program);
             alternativeProgramList.appendChild(item);
         });
+        
+        this.filterPrograms();
     }
     
     setupEventListeners() {
-        document.getElementById('viewPrograms').addEventListener('click', () => {
-            alert('온스타에서 비교과 프로그램을 확인해 보세요!');
-        });
-        
-        document.getElementById('retakeTest').addEventListener('click', () => {
-            sessionStorage.clear();
-            window.location.href = 'index.html';
-        });
-        
-        document.getElementById('shareResult').addEventListener('click', () => {
-            this.shareResult();
-        });
-        
-        document.getElementById('backButton').addEventListener('click', () => {
-            window.location.href = 'index.html';
-        });
 
-        // 화살표 버튼 클릭 시: 제목 복사 + 온스타 메인 열기
-        document.addEventListener('click', async (e) => {
-            const arrow = e.target.closest('.program-arrow');
-            if (!arrow) return;
+    document.getElementById('retakeTest').addEventListener('click', () => {
+        sessionStorage.clear();
+        window.location.href = 'index.html';
+    });
 
-            // 1) 프로그램 제목 가져오기
-            let title = arrow.dataset.programTitle;
-            if (!title) {
-                const item = arrow.closest('.program-item');
-                const textEl = item?.querySelector('.program-text');
-                title = textEl?.textContent?.trim() || '';
-            }
+    document.getElementById('shareResult').addEventListener('click', () => this.saveAsImage());
 
-            // 2) 클립보드 복사 (가능하면)
-            if (title) {
-                const textToCopy = `${title} (전주대 비교과 프로그램 검색용)`;
-                try {
-                    if (navigator.clipboard && navigator.clipboard.writeText) {
-                        await navigator.clipboard.writeText(textToCopy);
-                        alert('프로그램 이름이 복사되었습니다!\n온스타에서 붙여넣기(Ctrl+V) 후 검색하세요.');
-                    } else {
-                        // 구형 브라우저 대응
-                        prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                    }
-                } catch (err) {
-                    console.error('클립보드 복사 실패:', err);
-                    prompt('아래 내용을 복사해서 온스타 검색창에 붙여넣으세요.', textToCopy);
-                }
-            }
+    document.getElementById('backButton').addEventListener('click', () => 
+        window.location.href = 'index.html'
+    );
 
-            // 3) 온스타 메인 열기
-            window.open('https://onstar.jj.ac.kr/', '_blank');
+    const toggleSwitch = document.getElementById('recruitToggle');
+    if (toggleSwitch) {
+        toggleSwitch.addEventListener('change', (e) => {
+            this.showOnlyRecruiting = e.target.checked;
+            this.filterPrograms();
         });
     }
+}
+
     
-    shareResult() {
-        const typeData = personalityTypes[this.resultType];
-        const shareText = `나는 "${typeData.nickname} (${this.resultType})"! 캠퍼스 Match에서 당신의 유형도 확인해보세요!`;
+    // [최종 수정] 이미지 클립보드 복사 기능 ("유령 복제" 기법 유지)
+    async saveAsImage() {
+        if (window.location.protocol === 'file:') {
+            alert('🚨 중요: "file://" 경로로 실행 중입니다. 클립보드 복사가 차단될 수 있습니다.\nVS Code의 [Live Server]를 이용해주세요.');
+        }
+
+        const loading = document.getElementById('screenshotLoading');
+        const container = document.querySelector('.container');
         
-        if (navigator.share) {
-            navigator.share({
-                title: '캠퍼스 Match 결과',
-                text: shareText,
-                url: window.location.href
-            }).catch(err => console.log('공유 취소:', err));
-        } else {
-            navigator.clipboard.writeText(shareText + '\n' + window.location.href)
-                .then(() => alert('결과가 클립보드에 복사되었습니다!'))
-                .catch(err => console.error('복사 실패:', err));
+        // 로딩 표시
+        loading.style.display = 'flex';
+
+        try {
+            // 1. 화면 밖에서 조작할 '쌍둥이(Clone)' 생성
+            const clone = container.cloneNode(true);
+            clone.id = 'capture-target-clone'; 
+            
+            // 2. 쌍둥이를 화면 밖(-10000px)으로 이동
+            clone.style.position = 'fixed';
+            clone.style.left = '-10000px';
+            clone.style.top = '0';
+            clone.style.zIndex = '-9999';
+            
+            // 3. 쌍둥이 스타일 설정 (디자인 유지 최적화)
+            clone.style.width = container.offsetWidth + 'px'; 
+            clone.style.height = 'auto'; 
+            clone.style.overflow = 'visible'; 
+            
+            // [애니메이션 강제 정지]
+            const style = document.createElement('style');
+            style.innerHTML = `
+                #capture-target-clone, #capture-target-clone * {
+                    animation: none !important;
+                    transition: none !important;
+                    opacity: 1 !important;
+                }
+            `;
+            document.head.appendChild(style);
+
+            // [내부 컨텐츠 Flex 해제]
+            const cloneContent = clone.querySelector('.result-content');
+            if (cloneContent) {
+                cloneContent.style.height = 'auto';
+                cloneContent.style.overflow = 'visible';
+                cloneContent.style.flex = 'none'; 
+                cloneContent.style.display = 'block';
+                cloneContent.style.paddingBottom = '2rem'; 
+            }
+
+            // 4. 불필요한 요소 제거 (요약 카드만 남기기)
+            const classesToRemove = [
+                '.header',              
+                '.programs-section',    
+                '.action-section',      
+                '.back-button',         
+                '.toggle-wrapper',      
+                '.screenshot-loading',  
+                '.program-preview'      
+            ];
+
+            classesToRemove.forEach(selector => {
+                const elements = clone.querySelectorAll(selector);
+                elements.forEach(el => el.remove());
+            });
+
+            // 5. 쌍둥이를 잠시 문서에 붙임
+            document.body.appendChild(clone);
+
+            // 6. 이미지 렌더링 안정화 대기
+            await new Promise(resolve => setTimeout(resolve, 1000));
+
+            // 7. 찰칵!
+            const canvas = await html2canvas(clone, {
+                scale: 2, 
+                useCORS: true,
+                logging: false,
+                backgroundColor: null, // 투명 배경 유지
+                windowWidth: clone.scrollWidth,
+                windowHeight: clone.scrollHeight
+            });
+
+            // 8. [변경됨] 클립보드에 복사하기
+            canvas.toBlob(async (blob) => {
+                try {
+                    if (!blob) throw new Error('이미지 변환 실패');
+                    
+                    // Clipboard API 사용
+                    const item = new ClipboardItem({ 'image/png': blob });
+                    await navigator.clipboard.write([item]);
+                    
+                    alert('이미지가 클립보드에 복사되었습니다!\n(Ctrl+V로 붙여넣기 하세요)');
+                } catch (err) {
+                    console.error('클립보드 복사 실패:', err);
+                    // 실패 시 다운로드로 대체 (안전장치)
+                    const link = document.createElement('a');
+                    link.download = `CampusMatch_Result.png`;
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                    alert('클립보드 복사에 실패하여 이미지 파일로 다운로드합니다.');
+                }
+            }, 'image/png');
+
+            // 9. 증거 인멸
+            document.head.removeChild(style);
+            document.body.removeChild(clone);
+
+        } catch (err) {
+            console.error('캡처 프로세스 실패:', err);
+            alert('작업 중 오류가 발생했습니다: ' + err.message);
+        } finally {
+            loading.style.display = 'none';
         }
     }
 }
